@@ -135,46 +135,74 @@
     </section>
 
     <!-- Registration Form -->
-    <section id="register" class="py-5 bg-primary text-white">
-        <div class="container">
-            <h2 class="text-center fw-bold mb-4">Formulário de Inscrição</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="card shadow">
-                        <div class="card-body p-4">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Nome Completo</label>
-                                    <input type="text" class="form-control" id="name" required>
+    <!-- Registration Form -->
+<section id="register" class="py-5 bg-primary text-white">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">Formulário de Inscrição</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow">
+                    <div class="card-body p-4 text-dark">
+                        <form action="inscrever.php" method="POST">
+                            <div class="mb-3">
+                                <label for="nome_completo" class="form-label">Nome Completo</label>
+                                <input type="text" class="form-control" id="nome_completo" name="nome_completo" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefone" class="form-label">Telefone / WhatsApp</label>
+                                <input type="tel" class="form-control" id="telefone" name="telefone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Já participou de algum evento da Gnosis Brasil?</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="participou_evento" id="sim" value="Sim" required>
+                                    <label class="form-check-label" for="sim">Sim</label>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">E-mail</label>
-                                    <input type="email" class="form-control" id="email" required>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="participou_evento" id="nao" value="Não">
+                                    <label class="form-check-label" for="nao">Não</label>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">WhatsApp</label>
-                                    <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Como você soube da palestra?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="origem_contato[]" value="Instagram" id="insta">
+                                    <label class="form-check-label" for="insta">Instagram</label>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="interest" class="form-label">Tema de maior interesse</label>
-                                    <select class="form-select" id="interest">
-                                        <option value="astral">Projeção Astral</option>
-                                        <option value="lucid">Sonhos Lúcidos</option>
-                                        <option value="both">Ambos</option>
-                                    </select>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="origem_contato[]" value="Facebook" id="face">
+                                    <label class="form-check-label" for="face">Facebook</label>
                                 </div>
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-warning btn-lg">
-                                        <i class="fas fa-paper-plane"></i> Enviar Inscrição
-                                    </button>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="origem_contato[]" value="Indicação de amigo(a)" id="amigo">
+                                    <label class="form-check-label" for="amigo">Indicação de amigo(a)</label>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="origem_contato[]" value="Grupo do WhatsApp" id="grupo">
+                                    <label class="form-check-label" for="grupo">Grupo do WhatsApp</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="origem_contato[]" value="Outros" id="outros">
+                                    <label class="form-check-label" for="outros">Outros</label>
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-warning btn-lg">
+                                    <i class="fas fa-paper-plane"></i> Enviar Inscrição
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="py-5">
