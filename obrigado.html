@@ -1,136 +1,223 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscrição Confirmada - Gnosis Jaraguá do Sul</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome (Ícones) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7-32x32.webp" type="image/webp">
-    <style>
-        .confirmation-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(rgba(26, 9, 51, 0.9), rgba(26, 9, 51, 0.9)), url('https://gnosisbrasil.com/wp-content/uploads/2020/07/banner-site-gnosis-1.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-        .confirmation-card {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            color: #333;
-        }
-        .check-icon {
-            font-size: 5rem;
-            color: #28a745;
-        }
-        .btn-gnosis {
-            background-color: #6f42c1;
-            color: white;
-        }
-        .btn-gnosis:hover {
-            background-color: #5a32a8;
-            color: white;
-        }
-        .text-gnosis {
-            color: #6f42c1;
-        }
-        .social-icon {
-            font-size: 1.5rem;
-            margin: 0 10px;
-            color: #6f42c1;
-            transition: all 0.3s ease;
-        }
-        .social-icon:hover {
-            transform: translateY(-3px);
-            color: #5a32a8;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscrição Confirmada - Gnosis Jaraguá do Sul</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome (Ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" href="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7-32x32.webp" type="image/webp" />
+  <style>
+    .mobile-header {
+      background-color: #6f42c1;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .mobile-header .logo {
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    .mobile-header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .mobile-header p {
+      font-size: 0.9rem;
+      margin: 5px 0 0;
+      opacity: 0.9;
+    }
+
+    .confirmation-section {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      background: linear-gradient(rgba(26, 9, 51, 0.9), rgba(26, 9, 51, 0.9)),
+        url('https://gnosisbrasil.com/wp-content/uploads/2020/07/banner-site-gnosis-1.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding-top: 100px;
+      padding-bottom: 40px;
+    }
+
+    .confirmation-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      color: #333;
+      margin-top: 20px;
+      padding: 40px;
+    }
+
+    .check-icon {
+      font-size: 5rem;
+      color: #28a745;
+    }
+
+    .btn-gnosis {
+      background-color: #6f42c1;
+      color: white;
+    }
+
+    .btn-gnosis:hover {
+      background-color: #5a32a8;
+      color: white;
+    }
+
+    .text-gnosis {
+      color: #6f42c1;
+    }
+
+    .social-icon {
+      font-size: 1.5rem;
+      margin: 0 10px;
+      color: #6f42c1;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-3px);
+      color: #5a32a8;
+    }
+
+    @media (max-width: 768px) {
+      .confirmation-section {
+        padding-top: calc(80px + env(safe-area-inset-top));
+        padding-bottom: 20px;
+        padding-inline: 10px;
+      }
+
+      .confirmation-card {
+        padding: 20px !important;
+        margin-top: 0 !important;
+      }
+
+      .mobile-header h1 {
+        font-size: 1.3rem;
+      }
+
+      .mobile-header p {
+        font-size: 0.8rem;
+      }
+
+      .check-icon {
+        font-size: 4rem;
+      }
+
+      h1.text-gnosis {
+        font-size: 1.6rem;
+      }
+
+      .lead {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Confirmation Section -->
-    <section class="confirmation-section py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="confirmation-card p-5 text-center">
-                        <div class="check-icon mb-4">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <h1 class="text-gnosis mb-4">Inscrição Confirmada!</h1>
-                        <p class="lead mb-4">Obrigado por se inscrever no evento <strong>Desdobramento Astral & Sonhos Lúcidos</strong> da Gnosis Brasil.</p>
-                        
-                        <div class="alert alert-success mb-4">
-                            <h4 class="alert-heading">Próximos passos:</h4>
-                            <p class="mb-0">Enviaremos os detalhes do evento para o e-mail e Whatsapp cadastrados. </p>
-                        </div>
-                        
-                        <div class="details-box p-4 mb-4 text-start bg-light rounded">
-                            <h5 class="text-gnosis mb-3"><i class="fas fa-info-circle me-2"></i>Informações Importantes:</h5>
-                            <ul class="mb-0">
-                                <li><strong>Data:</strong> 13 de Agosto</li>
-                                <li><strong>Horário:</strong> 19h30</li>
-                                <li><strong>Local:</strong> R. Gustavo Hagedorn, 636 – Nova Brasília, Jaraguá do Sul – SC</li>
-                                <li><strong>Duração:</strong> Aproximadamente 2 horas</li>
-                                <li><strong>Levar:</strong> Caderno para anotações</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="whatsapp-box p-4 mb-4 bg-success text-white rounded">
-                            <h5><i class="fab fa-whatsapp me-2"></i>Participe do nosso grupo</h5>
-                            <p class="mb-3">Entre no grupo do WhatsApp para receber lembretes e materiais exclusivos:</p>
-                            <a href="http://bit.ly/3IDL7T4" class="btn btn-light btn-lg mb-3">
-                                <i class="fab fa-whatsapp me-2"></i> Entrar no Grupo
-                            </a>
-                        </div>
-                        
-                        <div class="social-media mb-4">
-                            <h5 class="text-gnosis mb-3">Siga a Gnosis Brasil</h5>
-                            <a href="https://www.facebook.com/gnosisbrasil/" target="_blank" class="social-icon">
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                            <a href="https://www.youtube.com/gnosisbrasilcanal" target="_blank" class="social-icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                            <a href="https://www.instagram.com/gnosisbrasil" target="_blank" class="social-icon">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                        
-                        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <a href="https://gnosisbrasil.com" class="btn btn-gnosis btn-lg px-4">
-                                <i class="fas fa-globe me-2"></i> Visite nosso Site
-                            </a>
-                            <a href="index.html" class="btn btn-outline-secondary btn-lg px-4">
-                                <i class="fas fa-home me-2"></i> Voltar ao Início
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Mobile Header -->
+  <div class="mobile-header d-block d-lg-none">
+    <img src="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7.webp" alt="Gnosis Brasil" class="logo" />
+    <h1>Inscrição Confirmada</h1>
+    <p>Desdobramento Astral & Sonhos Lúcidos</p>
+  </div>
 
-    <!-- Footer -->
-    <footer class="py-4 bg-dark text-white text-center">
-        <div class="container">
-            <div class="mb-3">
-                <img src="img/cropped-logo-sol-7.webp" alt="Logo Gnosis" style="height: 60px;">
+  <!-- Confirmation Section -->
+  <section class="confirmation-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="confirmation-card text-center">
+            <div class="check-icon mb-4">
+              <i class="fas fa-check-circle"></i>
             </div>
-            <p>&copy; 2025 Gnosis Brasil. Todos os direitos reservados.</p>
-            <p class="mb-0">
-                <a href="https://gnosisbrasil.com/politica-de-privacidade/" class="text-white text-decoration-none me-3">Política de Privacidade</a>
-                <a href="https://gnosisbrasil.com/termos-de-uso/" class="text-white text-decoration-none">Termos de Uso</a>
+            <h1 class="text-gnosis mb-4">Inscrição Confirmada!</h1>
+            <p class="lead mb-4">
+              Obrigado por se inscrever no evento
+              <strong>Desdobramento Astral & Sonhos Lúcidos</strong> da Gnosis Brasil.
             </p>
-        </div>
-    </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <div class="alert alert-success mb-4">
+              <h4 class="alert-heading">Próximos passos:</h4>
+              <p class="mb-0">Enviaremos os detalhes do evento para o e-mail e Whatsapp cadastrados.</p>
+            </div>
+
+            <div class="details-box p-4 mb-4 text-start bg-light rounded">
+              <h5 class="text-gnosis mb-3">
+                <i class="fas fa-info-circle me-2"></i>Informações Importantes:
+              </h5>
+              <ul class="mb-0">
+                <li><strong>Data:</strong> 13 de Agosto</li>
+                <li><strong>Horário:</strong> 19h30</li>
+                <li><strong>Local:</strong> R. Gustavo Hagedorn, 636 – Nova Brasília, Jaraguá do Sul – SC</li>
+                <li><strong>Duração:</strong> Aproximadamente 2 horas</li>
+                <li><strong>Levar:</strong> Caderno para anotações</li>
+              </ul>
+            </div>
+
+            <div class="whatsapp-box p-4 mb-4 bg-success text-white rounded">
+              <h5><i class="fab fa-whatsapp me-2"></i>Participe do nosso grupo</h5>
+              <p class="mb-3">Entre no grupo do WhatsApp para receber lembretes e materiais exclusivos:</p>
+              <a href="http://bit.ly/3IDL7T4" class="btn btn-light btn-lg mb-3">
+                <i class="fab fa-whatsapp me-2"></i> Entrar no Grupo
+              </a>
+            </div>
+
+            <div class="social-media mb-4">
+              <h5 class="text-gnosis mb-3">Siga a Gnosis Brasil</h5>
+              <a href="https://www.facebook.com/gnosisbrasil/" target="_blank" class="social-icon">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a href="https://www.youtube.com/gnosisbrasilcanal" target="_blank" class="social-icon">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="https://www.instagram.com/gnosisbrasil" target="_blank" class="social-icon">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+              <a href="https://gnosisbrasil.com" class="btn btn-gnosis btn-lg px-4">
+                <i class="fas fa-globe me-2"></i> Visite nosso Site
+              </a>
+              <a href="index.html" class="btn btn-outline-secondary btn-lg px-4">
+                <i class="fas fa-home me-2"></i> Voltar ao Início
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-dark text-white text-center">
+    <div class="container">
+      <div class="mb-3">
+        <img src="img\cropped-logo-sol-7.webp" alt="Logo Gnosis" style="height: 60px;" />
+      </div>
+      <p>&copy; 2025 Gnosis Brasil. Todos os direitos reservados.</p>
+      <p class="mb-0">
+        <a href="https://gnosisbrasil.com/politica-de-privacidade/" class="text-white text-decoration-none me-3">Política de Privacidade</a>
+        <a href="https://gnosisbrasil.com/termos-de-uso/" class="text-white text-decoration-none">Termos de Uso</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
