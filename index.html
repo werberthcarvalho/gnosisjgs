@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome (Ícones) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="img/cropped-logo-sol-7.webp" type="image/jpeg">
     <style>
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/shutterstock_286782836.jpg');
@@ -143,59 +144,53 @@
             <div class="col-md-8 col-lg-6">
                 <div class="card shadow">
                     <div class="card-body p-4 text-dark">
-                        <form action="inscrever.php" method="POST">
-                            <div class="mb-3">
-                                <label for="nome_completo" class="form-label">Nome Completo</label>
-                                <input type="text" class="form-control" id="nome_completo" name="nome_completo" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">E-mail</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="telefone" class="form-label">Telefone / WhatsApp</label>
-                                <input type="tel" class="form-control" id="telefone" name="telefone" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Já participou de algum evento da Gnosis Brasil?</label><br>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="participou_evento" id="sim" value="Sim" required>
-                                    <label class="form-check-label" for="sim">Sim</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="participou_evento" id="nao" value="Não">
-                                    <label class="form-check-label" for="nao">Não</label>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Como você soube da palestra?</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="origem_contato[]" value="Instagram" id="insta">
-                                    <label class="form-check-label" for="insta">Instagram</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="origem_contato[]" value="Facebook" id="face">
-                                    <label class="form-check-label" for="face">Facebook</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="origem_contato[]" value="Indicação de amigo(a)" id="amigo">
-                                    <label class="form-check-label" for="amigo">Indicação de amigo(a)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="origem_contato[]" value="Grupo do WhatsApp" id="grupo">
-                                    <label class="form-check-label" for="grupo">Grupo do WhatsApp</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="origem_contato[]" value="Outros" id="outros">
-                                    <label class="form-check-label" for="outros">Outros</label>
-                                </div>
-                            </div>
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-warning btn-lg">
-                                    <i class="fas fa-paper-plane"></i> Enviar Inscrição
-                                </button>
-                            </div>
-                        </form>
+                       <form action="https://formsubmit.co/jaraguadosul@gnosisbrasil.com" method="POST">
+  <!-- Ocultar CAPTCHA e redirecionar -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://seusite.github.io/obrigado.html">
+
+  <!-- Nome -->
+  <div class="mb-3">
+    <label>Nome Completo</label>
+    <input type="text" name="Nome" class="form-control" required>
+  </div>
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label>E-mail</label>
+    <input type="email" name="Email" class="form-control" required>
+  </div>
+
+  <!-- Telefone -->
+  <div class="mb-3">
+    <label>WhatsApp</label>
+    <input type="tel" name="WhatsApp" class="form-control" required>
+  </div>
+
+  <!-- Já participou? -->
+  <div class="mb-3">
+    <label>Já participou de algum evento?</label><br>
+    <input type="radio" name="Participou" value="Sim" required> Sim
+    <input type="radio" name="Participou" value="Não"> Não
+  </div>
+
+  <!-- Como soube -->
+  <div class="mb-3">
+    <label>Como soube da palestra?</label><br>
+    <input type="checkbox" name="Origem[]" value="Instagram"> Instagram<br>
+    <input type="checkbox" name="Origem[]" value="Facebook"> Facebook<br>
+    <input type="checkbox" name="Origem[]" value="Indicação"> Indicação<br>
+    <input type="checkbox" name="Origem[]" value="Grupo WhatsApp"> Grupo WhatsApp<br>
+    <input type="checkbox" name="Origem[]" value="Outros"> Outros
+  </div>
+
+  <div class="d-grid">
+    <button type="submit" class="btn btn-warning btn-lg">
+      <i class="fas fa-paper-plane"></i> Enviar Inscrição
+    </button>
+  </div>
+</form>
+
                     </div>
                 </div>
             </div>
