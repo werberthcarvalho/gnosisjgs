@@ -56,13 +56,24 @@
         .navbar-brand img {
             height: 40px;
         }
-        .astral {
-            font-family: 'Amontillados', serif;
-            font-weight: normal !important;
-            font-size: clamp(2rem, 6vw, 8rem); /* Reduzido o tamanho máximo */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+       .astral {
+    font-family: 'Amontillados', serif;
+    font-weight: normal !important;
+    font-size: clamp(2rem, 6vw, 8rem);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
 
-        }
+/* Estilos específicos para telas pequenas */
+@media (max-width: 768px) {
+    .astral {
+        font-size: clamp(1.5rem, 8vw, 3rem); /* Tamanhos menores para mobile */
+        line-height: 1.2; /* Ajuste de espaçamento para melhor legibilidade */
+    }
+    
+    .hero-content p.lead {
+        font-size: 1rem; /* Reduz o tamanho do texto secundário */
+    }
+}
         .bg-gnosis {
             background-color: #1a0933;
         }
@@ -81,6 +92,15 @@
             transition: transform 0.3s ease;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
+
+
+
+        @font-face {
+    font-family: 'Amontillados';
+    src: url('Amontillados.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
     </style>
 </head>
 <body>
@@ -329,22 +349,28 @@
                         <div class="card-body p-4 text-dark">
                             <form action="https://formsubmit.co/jaraguadosul@gnosisbrasil.com" method="POST"> 
     <!-- Redirecionamento após envio -->
-    <input type="hidden" name="_next" value="https://werberthcarvalho.github.io/gnosisjgs/obrigado.html">
-    
-    <!-- Mensagem de resposta automática -->
-    <input type="hidden" name="_autoresponse" value="Olá!
+    <!-- Configurações do FormSubmit -->
+<input type="hidden" name="_next" value="https://werberthcarvalho.github.io/gnosisjgs/obrigado.html">
+<input type="hidden" name="_captcha" value="false">
+<input type="text" name="_honey" style="display:none"> <!-- Anti-spam -->
 
-Recebemos sua inscrição para a palestra Desdobramento Astral & Sonhos Lúcidos.
+<!-- RESPOSTA AUTOMÁTICA PERSONALIZADA -->
+<input type="hidden" name="_autoresponse" value="Olá!  
 
-📅 Data: 13 de Agosto  
-⏰ Horário: 19h30  
-📍 Local: R. Gustavo Hagedorn, 636 – Nova Brasília, Jaraguá do Sul – SC
+Obrigado por se inscrever na palestra *Desdobramento Astral & Sonhos Lúcidos*!  
 
-Entre no grupo do WhatsApp para receber lembretes e conteúdo exclusivo:  
-👉 http://bit.ly/3IDL7T4
+📅 **Data:** 13 de Agosto  
+⏰ **Horário:** 19h30  
+📍 **Local:** R. Gustavo Hagedorn, 636 – Nova Brasília, Jaraguá do Sul – SC  
 
-Nos vemos lá!  
-Equipe Gnosis Jaraguá do Sul">
+🔮 **Não perca!** Leve um caderno para anotações.  
+
+📲 Entre no nosso grupo do WhatsApp para receber lembretes e conteúdos exclusivos:  
+👉 [Grupo do WhatsApp](http://bit.ly/3IDL7T4)  
+
+Atenciosamente,  
+**Equipe Gnosis Jaraguá do Sul**  
+jaraguadosul@gnosisbrasil.com">
     
     <!-- Controle de SPAM -->
     <input type="text" name="_honey" style="display:none">
