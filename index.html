@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,16 +13,23 @@
     <style>
         /* Estilos do Carrossel Hero - TAMANHO REDUZIDO */
         .hero-carousel {
-            height: 70vh; /* Reduzido de 100vh */
-            min-height: 400px; /* Reduzido de 500px */
-            margin-top: 56px; /* Compensa a navbar fixa */
+            height: 70vh;
+            /* Reduzido de 100vh */
+            min-height: 400px;
+            /* Reduzido de 500px */
+            margin-top: 56px;
+            /* Compensa a navbar fixa */
         }
+
         .hero-carousel .carousel-item {
-            height: 70vh; /* Reduzido de 100vh */
-            min-height: 400px; /* Reduzido de 500px */
+            height: 70vh;
+            /* Reduzido de 100vh */
+            min-height: 400px;
+            /* Reduzido de 500px */
             background-size: cover;
             background-position: center;
         }
+
         .hero-carousel .carousel-item::before {
             content: '';
             position: absolute;
@@ -31,6 +39,7 @@
             bottom: 0;
             background: rgba(0, 0, 0, 0.6);
         }
+
         .hero-content {
             position: absolute;
             top: 50%;
@@ -42,67 +51,78 @@
             z-index: 1;
             padding: 0 15px;
         }
-        
+
         /* Estilos Gerais */
         .btn-whatsapp {
             background-color: #25D366;
             color: white;
         }
+
         .feature-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: #6f42c1;
         }
+
         .navbar-brand img {
             height: 40px;
         }
-       .astral {
-    font-family: 'Amontillados', serif;
-    font-weight: normal !important;
-    font-size: clamp(2rem, 6vw, 8rem);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
 
-/* Estilos específicos para telas pequenas */
-@media (max-width: 768px) {
-    .astral {
-        font-size: clamp(1.5rem, 8vw, 3rem); /* Tamanhos menores para mobile */
-        line-height: 1.2; /* Ajuste de espaçamento para melhor legibilidade */
-    }
-    
-    .hero-content p.lead {
-        font-size: 1rem; /* Reduz o tamanho do texto secundário */
-    }
-}
+        .astral {
+            font-family: 'Amontillados', serif;
+            font-weight: normal !important;
+            font-size: clamp(2rem, 6vw, 8rem);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilos específicos para telas pequenas */
+        @media (max-width: 768px) {
+            .astral {
+                font-size: clamp(1.5rem, 8vw, 3rem);
+                /* Tamanhos menores para mobile */
+                line-height: 1.2;
+                /* Ajuste de espaçamento para melhor legibilidade */
+            }
+
+            .hero-content p.lead {
+                font-size: 1rem;
+                /* Reduz o tamanho do texto secundário */
+            }
+        }
+
         .bg-gnosis {
             background-color: #1a0933;
         }
+
         .text-gnosis {
             color: #6f42c1;
         }
-        .carousel-control-prev, 
+
+        .carousel-control-prev,
         .carousel-control-next {
             width: 5%;
         }
+
         body {
-            padding-top: 0; /* Removido o padding-top pois o carrossel já tem margin-top */
+            padding-top: 0;
+            /* Removido o padding-top pois o carrossel já tem margin-top */
         }
+
         .card-hover:hover {
             transform: translateY(-5px);
             transition: transform 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-
-
         @font-face {
-    font-family: 'Amontillados';
-    src: url('Amontillados.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+            font-family: 'Amontillados';
+            src: url('Amontillados.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
     </style>
 </head>
+
 <body>
     <!-- Navbar Fixa -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-gnosis fixed-top">
@@ -140,34 +160,38 @@
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
         </div>
-        
+
         <div class="carousel-inner">
             <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url('img/360_F_150772270_dPNGdE9M8HPT6FBERSe0Wl6kF9mjWVOz.jpg');">
+            <div class="carousel-item active"
+                style="background-image: url('img/360_F_150772270_dPNGdE9M8HPT6FBERSe0Wl6kF9mjWVOz.jpg');">
                 <div class="hero-content">
                     <h1 class="display-4 astral">Desdobramento Astral & Sonhos Lúcidos</h1>
-                    <p class="lead fs-4">Aprenda a explorar dimensões além do corpo físico e domine a arte dos sonhos conscientes.</p>
+                    <p class="lead fs-4">Aprenda a explorar dimensões além do corpo físico e domine a arte dos sonhos
+                        conscientes.</p>
                     <a href="#register" class="btn btn-primary btn-lg mt-3">
                         <i class="fas fa-user-plus"></i> Inscreva-se Agora
                     </a>
                     <p class="mt-3 text-warning fw-bold">VAGAS LIMITADAS</p>
                 </div>
             </div>
-            
+
             <!-- Slide 2 -->
             <div class="carousel-item" style="background-image: url('img/shutterstock_286782836.jpg');">
                 <div class="hero-content">
                     <h1 class="display-4 astral">Expansão da Consciência</h1>
-                    <p class="lead fs-4">Descubra técnicas ancestrais para desenvolvimento espiritual e autoconhecimento.</p>
+                    <p class="lead fs-4">Descubra técnicas ancestrais para desenvolvimento espiritual e
+                        autoconhecimento.</p>
                     <a href="#register" class="btn btn-primary btn-lg mt-3">
                         <i class="fas fa-user-plus"></i> Garanta Sua Vaga
                     </a>
                     <p class="mt-3 text-warning fw-bold">INSCRIÇÕES ABERTAS</p>
                 </div>
             </div>
-            
+
             <!-- Slide 3 -->
-            <div class="carousel-item" style="background-image: url('img/science-fiction-space-nebula-artwork-wallpaper-thumb.jpg');">
+            <div class="carousel-item"
+                style="background-image: url('img/science-fiction-space-nebula-artwork-wallpaper-thumb.jpg');">
                 <div class="hero-content">
                     <h1 class="display-4 astral">Viagem Astral Consciente</h1>
                     <p class="lead fs-4">Domine os métodos para experiências fora do corpo com segurança e clareza.</p>
@@ -178,7 +202,7 @@
                 </div>
             </div>
         </div>
-        
+
         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
@@ -192,18 +216,25 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                   <h2 class="fw-bold text-gnosis">Sobre o Evento</h2>
-<p>Você já teve um sonho tão vívido que parecia estar acordado? Nesta palestra, vamos mergulhar nos mistérios do <strong>desdobramento astral</strong> e dos <strong>sonhos lúcidos</strong> — técnicas poderosas para a <strong>expansão da consciência</strong>.</p>
+                    <h2 class="fw-bold text-gnosis">Sobre o Evento</h2>
+                    <p>Você já teve um sonho tão vívido que parecia estar acordado? Nesta palestra, vamos mergulhar nos
+                        mistérios do <strong>desdobramento astral</strong> e dos <strong>sonhos lúcidos</strong> —
+                        técnicas poderosas para a <strong>expansão da consciência</strong>.</p>
 
-<p>Compartilharemos <strong>métodos práticos</strong> e <strong>relatos reais</strong> de experiências fora do corpo, explorando como essas vivências têm sido reconhecidas e estudadas ao longo da história.</p>
+                    <p>Compartilharemos <strong>métodos práticos</strong> e <strong>relatos reais</strong> de
+                        experiências fora do corpo, explorando como essas vivências têm sido reconhecidas e estudadas ao
+                        longo da história.</p>
 
-<p>Conhecidos em diversas culturas, os sonhos lúcidos — também chamados de desdobramento astral — estão profundamente conectados aos mistérios da mente humana. Esse fenômeno intrigante foi investigado por estudiosos e cientistas, como <strong>Carl Gustav Jung</strong>, fundador da psicologia analítica, que inclusive relatou suas próprias experiências nessa área.</p>
+                    <p>Conhecidos em diversas culturas, os sonhos lúcidos — também chamados de desdobramento astral —
+                        estão profundamente conectados aos mistérios da mente humana. Esse fenômeno intrigante foi
+                        investigado por estudiosos e cientistas, como <strong>Carl Gustav Jung</strong>, fundador da
+                        psicologia analítica, que inclusive relatou suas próprias experiências nessa área.</p>
 
-<ul>
-  <li>Aprenda técnicas para sair do corpo conscientemente.</li>
-  <li>Desenvolva a memória dos sonhos (memória onírica).</li>
-  <li>Aproveite todas as noites para explorar o universo do desdobramento astral.</li>
-</ul>
+                    <ul>
+                        <li>Aprenda técnicas para sair do corpo conscientemente.</li>
+                        <li>Desenvolva a memória dos sonhos (memória onírica).</li>
+                        <li>Aproveite todas as noites para explorar o universo do desdobramento astral.</li>
+                    </ul>
 
                 </div>
                 <div class="col-lg-6">
@@ -296,7 +327,8 @@
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 card-hover">
                         <div class="card-body">
-                            <p class="card-text">"Aprendi técnicas que mudaram completamente minha relação com os sonhos. Agora consigo ter experiências lúcidas regularmente!"</p>
+                            <p class="card-text">"Aprendi técnicas que mudaram completamente minha relação com os
+                                sonhos. Agora consigo ter experiências lúcidas regularmente!"</p>
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-user-circle fa-3x me-3 text-gnosis"></i>
                                 <div>
@@ -310,7 +342,8 @@
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 card-hover">
                         <div class="card-body">
-                            <p class="card-text">"Finalmente consegui ter minha primeira experiência de desdobramento astral após aplicar os métodos ensinados."</p>
+                            <p class="card-text">"Finalmente consegui ter minha primeira experiência de desdobramento
+                                astral após aplicar os métodos ensinados."</p>
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-user-circle fa-3x me-3 text-gnosis"></i>
                                 <div>
@@ -321,10 +354,12 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 card-hover">
                         <div class="card-body">
-                            <p class="card-text">"As informações são apresentadas de forma clara e prática. Recomendo para quem quer explorar esses estados de consciência."</p>
+                            <p class="card-text">"As informações são apresentadas de forma clara e prática. Recomendo
+                                para quem quer explorar esses estados de consciência."</p>
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-user-circle fa-3x me-3 text-gnosis"></i>
                                 <div>
@@ -347,15 +382,16 @@
                 <div class="col-md-8 col-lg-6">
                     <div class="card shadow">
                         <div class="card-body p-4 text-dark">
-                            <form action="https://formsubmit.co/jaraguadosul@gnosisbrasil.com" method="POST"> 
-    <!-- Redirecionamento após envio -->
-    <!-- Configurações do FormSubmit -->
-<input type="hidden" name="_next" value="https://werberthcarvalho.github.io/gnosisjgs/obrigado.html">
-<input type="hidden" name="_captcha" value="false">
-<input type="text" name="_honey" style="display:none"> <!-- Anti-spam -->
+                            <form action="https://formsubmit.co/jaraguadosul@gnosisbrasil.com" method="POST">
+                                <!-- Redirecionamento após envio -->
+                                <!-- Configurações do FormSubmit -->
+                                <input type="hidden" name="_next"
+                                    value="https://werberthcarvalho.github.io/gnosisjgs/obrigado.html">
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="text" name="_honey" style="display:none"> <!-- Anti-spam -->
 
-<!-- RESPOSTA AUTOMÁTICA PERSONALIZADA -->
-<input type="hidden" name="_autoresponse" value="Olá!  
+                                <!-- RESPOSTA AUTOMÁTICA PERSONALIZADA -->
+                                <input type="hidden" name="_autoresponse" value="Olá!  
 
 Obrigado por se inscrever na palestra *Desdobramento Astral & Sonhos Lúcidos*!  
 
@@ -371,83 +407,86 @@ Obrigado por se inscrever na palestra *Desdobramento Astral & Sonhos Lúcidos*!
 Atenciosamente,  
 **Equipe Gnosis Jaraguá do Sul**  
 jaraguadosul@gnosisbrasil.com">
-    
-    <!-- Controle de SPAM -->
-    <input type="text" name="_honey" style="display:none">
-    <input type="hidden" name="_captcha" value="false">
 
-    <!-- Nome -->
-    <div class="mb-3">
-        <label class="form-label">Nome Completo*</label>
-        <input type="text" name="Nome" class="form-control" required>
-    </div>
+                                <!-- Controle de SPAM -->
+                                <input type="text" name="_honey" style="display:none">
+                                <input type="hidden" name="_captcha" value="false">
 
-    <!-- E-mail (campo obrigatório para autoresponse funcionar) -->
-    <div class="mb-3">
-        <label class="form-label">E-mail*</label>
-        <input type="email" name="email" class="form-control" required>
-    </div>
+                                <!-- Nome -->
+                                <div class="mb-3">
+                                    <label class="form-label">Nome Completo*</label>
+                                    <input type="text" name="Nome" class="form-control" required>
+                                </div>
 
-    <!-- WhatsApp -->
-    <div class="mb-3">
-        <label class="form-label">WhatsApp*</label>
-        <input type="tel" name="WhatsApp" class="form-control" required>
-    </div>
+                                <!-- E-mail (campo obrigatório para autoresponse funcionar) -->
+                                <div class="mb-3">
+                                    <label class="form-label">E-mail*</label>
+                                    <input type="email" name="email" class="form-control" required>
+                                </div>
 
-    <!-- Já participou? -->
-    <div class="mb-3">
-        <label class="form-label">Já participou de algum evento?*</label>
-        <select name="Participou" class="form-select" required>
-            <option value="" selected disabled>Selecione...</option>
-            <option value="Sim">Sim</option>
-            <option value="Não">Não</option>
-        </select>
-    </div>
+                                <!-- WhatsApp -->
+                                <div class="mb-3">
+                                    <label class="form-label">WhatsApp*</label>
+                                    <input type="tel" name="WhatsApp" class="form-control" required>
+                                </div>
 
-    <!-- Como soube da palestra? -->
-    <div class="mb-4">
-        <label class="form-label">Como soube da palestra? (Marque todas que aplicar)</label>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Origem[]" id="instagram" value="Instagram">
-            <label class="form-check-label" for="instagram">Instagram</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Origem[]" id="facebook" value="Facebook">
-            <label class="form-check-label" for="facebook">Facebook</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Origem[]" id="indicacao" value="Indicação">
-            <label class="form-check-label" for="indicacao">Indicação</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Origem[]" id="whatsapp" value="Grupo WhatsApp">
-            <label class="form-check-label" for="whatsapp">Grupo WhatsApp</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Origem[]" id="outros" value="Outros">
-            <label class="form-check-label" for="outros">Outros</label>
-        </div>
-    </div>
+                                <!-- Já participou? -->
+                                <div class="mb-3">
+                                    <label class="form-label">Já participou de algum evento?*</label>
+                                    <select name="Participou" class="form-select" required>
+                                        <option value="" selected disabled>Selecione...</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </div>
 
-    <!-- Botão de envio -->
-    <div class="d-grid">
-        <button type="submit" class="btn btn-warning btn-lg">
-            <i class="fas fa-paper-plane me-2"></i> Enviar Inscrição
-        </button>
-    </div>
+                                <!-- Como soube da palestra? -->
+                                <div class="mb-4">
+                                    <label class="form-label">Como soube da palestra? (Marque todas que aplicar)</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="Origem[]" id="instagram"
+                                            value="Instagram">
+                                        <label class="form-check-label" for="instagram">Instagram</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="Origem[]" id="facebook"
+                                            value="Facebook">
+                                        <label class="form-check-label" for="facebook">Facebook</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="Origem[]" id="indicacao"
+                                            value="Indicação">
+                                        <label class="form-check-label" for="indicacao">Indicação</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="Origem[]" id="whatsapp"
+                                            value="Grupo WhatsApp">
+                                        <label class="form-check-label" for="whatsapp">Grupo WhatsApp</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="Origem[]" id="outros"
+                                            value="Outros">
+                                        <label class="form-check-label" for="outros">Outros</label>
+                                    </div>
+                                </div>
 
-    <!-- Mensagem alternativa caso JavaScript esteja desativado -->
-    <noscript>
-        <p class="text-danger mt-2">Por favor, habilite JavaScript para enviar o formulário.</p>
-    </noscript>
-</form>
+                                <!-- Botão de envio -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-warning btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i> Enviar Inscrição
+                                    </button>
+                                </div>
 
-
-
-
+                                <!-- Mensagem alternativa caso JavaScript esteja desativado -->
+                                <noscript>
+                                    <p class="text-danger mt-2">Por favor, habilite JavaScript para enviar o formulário.
+                                    </p>
+                                </noscript>
+                            </form>
                         </div>
                     </div>
-                    <p class="text-white-50 mt-3 text-center">Seus dados estão seguros conosco. Não compartilhamos suas informações.</p>
+                    <p class="text-white-50 mt-3 text-center">Seus dados estão seguros conosco. Não compartilhamos suas
+                        informações.</p>
                 </div>
             </div>
         </div>
@@ -460,37 +499,123 @@ jaraguadosul@gnosisbrasil.com">
             <div class="accordion" id="faqAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne">
                             O desdobramento astral é perigoso?
                         </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Quando praticado com orientação adequada e seguindo os princípios de proteção energética, o desdobramento astral é uma experiência segura. Ensinamos todas as precauções necessárias durante o evento.
+                            Quando praticado com orientação adequada e seguindo os princípios de proteção energética, o
+                            desdobramento astral é uma experiência segura. Ensinamos todas as precauções necessárias
+                            durante o evento.
                         </div>
                     </div>
                 </div>
+
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                            Qualquer pessoa pode ter sonhos lúcidos?
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo">
+                            <strong>Como será este encontro e qual seu objetivo?</strong>
                         </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Sim, com prática e dedicação, qualquer pessoa pode desenvolver a capacidade de ter sonhos lúcidos. Alguns têm mais facilidade natural, mas todos podem aprender com as técnicas adequadas.
+                            <p>Todos nós sonhamos — isso é fato científico. No entanto, poucos compreendem plenamente os
+                                símbolos, arquétipos e mensagens que se revelam em nosso mundo onírico. Como observou o
+                                renomado psiquiatra Carl Gustav Jung: <em>"Os sonhos são a voz do inconsciente, a
+                                    maneira pela qual nossa psique se comunica conosco"</em>.</p>
+
+                            <p>Nesta palestra <strong>Desdobramento Astral e Sonhos Lúcidos</strong>, conduziremos uma
+                                jornada fascinante por esse território interior, combinando:</p>
+
+                            <ul>
+                                <li>Psicologia profunda junguiana</li>
+                                <li>Filosofia contemplativa</li>
+                                <li>Conceitos de psicanálise avançada</li>
+                            </ul>
+
+                            <p>Nosso enfoque vai além do misticismo — trata-se de um <strong>método
+                                    investigativo</strong> sobre a natureza da mente, os mecanismos da percepção e os
+                                fundamentos da realidade.</p>
+
+                            <h3>O que exploraremos:</h3>
+                            <ol>
+                                <li><strong>Desdobramento astral:</strong> Como a projeção da consciência ocorre
+                                    naturalmente durante o sono</li>
+                                <li><strong>Sonhos lúcidos:</strong> Técnicas para manter a consciência ativa dentro dos
+                                    sonhos</li>
+                                <li><strong>Práticas desenvolvimentais:</strong> Como cultivar essas experiências
+                                    através de atenção plena e intencionalidade</li>
+                            </ol>
+
+                            <h3>Descobertas e aplicações:</h3>
+                            <p>Examinaremos casos históricos onde sonhos reveladores levaram a:</p>
+                            <ul>
+                                <li>Descobertas científicas revolucionárias</li>
+                                <li>Obras artísticas geniais</li>
+                                <li>Insights transformadores que mudaram paradigmas</li>
+                            </ul>
+
+                            <p>Este encontro será um <strong>espaço seguro</strong> para compartilhamento, pesquisa
+                                interior e crescimento pessoal — totalmente acessível para iniciantes. Convidamos todos
+                                os buscadores que desejam:</p>
+                            <ul>
+                                <li>Ampliar sua percepção da realidade</li>
+                                <li>Desenvolver lucidez onírica</li>
+                                <li>Explorar as dimensões multifacetadas da consciência</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                            Preciso ter experiência prévia?
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree">
+                            Qualquer pessoa pode ter sonhos lúcidos?
                         </button>
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Não é necessário ter experiência prévia. O conteúdo é apresentado de forma acessível tanto para iniciantes quanto para quem já tem algum conhecimento sobre o tema.
+                            Sim, com prática e dedicação, qualquer pessoa pode desenvolver a capacidade de ter sonhos
+                            lúcidos. Alguns têm mais facilidade natural, mas todos podem aprender com as técnicas
+                            adequadas.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour">
+                            A experiência é algo religioso?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            A palestra não tem caráter religioso, mas sim filosófico e vivencial.
+                            No entanto, a forma como cada pessoa vive a experiência é individual — para alguns, pode ter
+                            um significado mais espiritual ou até religioso, dependendo de suas crenças e visão de
+                            mundo.
+                            Nosso objetivo é oferecer um espaço de reflexão e autoconhecimento, aberto a todos, com
+                            liberdade e respeito às diferentes formas de sentir e interpretar.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive">
+                            Preciso ter experiência prévia?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Não é necessário ter experiência prévia. O conteúdo é apresentado de forma acessível tanto
+                            para iniciantes quanto para quem já tem algum conhecimento sobre o tema.
                         </div>
                     </div>
                 </div>
@@ -499,46 +624,51 @@ jaraguadosul@gnosisbrasil.com">
     </section>
 
     <!-- Contact Section -->
-  <section id="contact" class="py-5">
-  <div class="container">
-    <h2 class="text-center fw-bold mb-5 text-gnosis">Contato</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card shadow">
-          <div class="card-body text-center p-4">
-            <h4><i class="fas fa-map-marker-alt text-gnosis"></i> Instituto Gnosis Brasil – Jaraguá do Sul/SC</h4>
-            <div class="row mt-4">
-              <div class="col-md-6 mb-3">
-                <a href="http://bit.ly/3IDL7T4" class="btn btn-whatsapp btn-lg w-100" target="_blank" rel="noopener">
-                  <i class="fab fa-whatsapp"></i> Grupo do WhatsApp
-                </a>
-              </div>
-              <div class="col-md-6 mb-3">
-                <a href="mailto:jaraguadosul@gnosisbrasil.com" class="btn btn-outline-dark btn-lg w-100">
-                  <i class="fas fa-envelope"></i> Enviar E-mail
-                </a>
-              </div>
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5 text-gnosis">Contato</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow">
+                        <div class="card-body text-center p-4">
+                            <h4><i class="fas fa-map-marker-alt text-gnosis"></i> Instituto Gnosis Brasil – Jaraguá do
+                                Sul/SC</h4>
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-3">
+                                    <a href="http://bit.ly/3IDL7T4" class="btn btn-whatsapp btn-lg w-100"
+                                        target="_blank" rel="noopener">
+                                        <i class="fab fa-whatsapp"></i> Grupo do WhatsApp
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <a href="mailto:jaraguadosul@gnosisbrasil.com"
+                                        class="btn btn-outline-dark btn-lg w-100">
+                                        <i class="fas fa-envelope"></i> Enviar E-mail
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="mt-3">
+                                <h5 class="text-gnosis">Redes Sociais</h5>
+                                <a href="https://www.facebook.com/gnosisbrasil/" class="btn btn-outline-primary me-2"
+                                    target="_blank" rel="noopener">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.instagram.com/gnosisbrasil" class="btn btn-outline-info me-2"
+                                    target="_blank" rel="noopener">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.youtube.com/gnosisbrasilcanal" class="btn btn-outline-danger me-2"
+                                    target="_blank" rel="noopener">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <hr>
-            <div class="mt-3">
-              <h5 class="text-gnosis">Redes Sociais</h5>
-              <a href="https://www.facebook.com/gnosisbrasil/" class="btn btn-outline-primary me-2" target="_blank" rel="noopener">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="https://www.instagram.com/gnosisbrasil" class="btn btn-outline-info me-2" target="_blank" rel="noopener">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="https://www.youtube.com/gnosisbrasilcanal" class="btn btn-outline-danger me-2" target="_blank" rel="noopener">
-                <i class="fab fa-youtube"></i>
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Footer -->
     <footer class="py-4 bg-dark text-white text-center">
@@ -558,12 +688,12 @@ jaraguadosul@gnosisbrasil.com">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Inicializa o carrossel com intervalo de 5 segundos
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var myCarousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
                 interval: 5000,
                 wrap: true
             });
-            
+
             // Suaviza o scroll para links âncora
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -576,4 +706,5 @@ jaraguadosul@gnosisbrasil.com">
         });
     </script>
 </body>
+
 </html>
