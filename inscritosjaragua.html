@@ -1,639 +1,793 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Lista de Chamada — Instituto Gnosis Brasil</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #5b21b6;
-      --secondary-color: #f7f9fc;
-    }
-    body {
-      background: var(--secondary-color);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      padding-bottom: 80px;
-      font-size: 14px;
-    }
-    .card {
-      border-radius: 10px;
-      border: none;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-    .brand {
-      color: var(--primary-color);
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    .small-muted {
-      font-size: 0.8rem;
-      color: #6c757d;
-    }
-    
-    /* iOS Style Switch */
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 42px;
-      height: 24px;
-    }
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      transition: .4s;
-      border-radius: 24px;
-    }
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: .4s;
-      border-radius: 50%;
-    }
-    input:checked + .slider {
-      background-color: var(--primary-color);
-    }
-    input:checked + .slider:before {
-      transform: translateX(18px);
-    }
-    
-    /* Contact Button */
-    .contact-btn {
-      width: 26px;
-      height: 26px;
-      padding: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background-color: #e9ecef;
-      border: none;
-      color: #495057;
-      font-size: 12px;
-    }
-    .contact-btn:hover {
-      background-color: #dee2e6;
-    }
-    
-    /* Floating Action Button */
-    .fab {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .fab svg {
-      width: 20px;
-      height: 20px;
-    }
-    
-    /* Table adjustments */
-    .table-responsive {
-      overflow-x: auto;
-    }
-    .table th, .table td {
-      vertical-align: middle;
-      padding: 8px 6px;
-    }
-    .table th {
-      font-weight: 500;
-      color: #495057;
-      background-color: #f8f9fa;
-      font-size: 0.85rem;
-    }
-    .participant-name {
-      font-weight: 500;
-      color: #212529;
-      font-size: 0.9rem;
-    }
-    
-    /* Modal adjustments */
-    .modal-header {
-      border-bottom: none;
-      padding-bottom: 0;
-      padding: 12px 16px;
-    }
-    .modal-footer {
-      border-top: none;
-      padding: 12px 16px;
-    }
-    .modal-body {
-      padding: 16px;
-    }
-    
-    /* Compact form elements */
-    .form-control, .form-select {
-      padding: 0.375rem 0.75rem;
-      font-size: 0.85rem;
-      height: calc(1.5em + 0.75rem + 2px);
-    }
-    .form-label {
-      margin-bottom: 0.25rem;
-      font-size: 0.85rem;
-    }
-    
-    /* Action buttons */
-    .action-btn {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: #6c757d;
-      color: white;
-      border: none;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .action-btn svg {
-      width: 20px;
-      height: 20px;
-    }
-    .action-btn.secondary {
-      bottom: 140px;
-      background-color: #0d6efd;
-    }
-    
-    /* Badge for counters */
-    .badge-count {
-      font-size: 0.75rem;
-      font-weight: 500;
-      background-color: var(--primary-color);
-    }
-    
-    /* Compact buttons */
-    .btn-sm {
-      padding: 0.25rem 0.5rem;
-      font-size: 0.8rem;
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista de Chamada — Instituto Gnosis Brasil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #5b21b6;
+            --secondary-color: #f7f9fc;
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            --shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Global Styles --- */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--secondary-color);
+            font-family: var(--font-family);
+            font-size: 14px;
+            padding-bottom: 120px;
+        }
+
+        .card {
+            border-radius: 10px;
+            border: none;
+            box-shadow: var(--shadow);
+        }
+
+        .brand {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .small-muted {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        /* --- iOS Style Switch --- */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 42px;
+            height: 24px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        input:checked + .slider:before {
+            transform: translateX(18px);
+        }
+        
+        /* --- Contact Button --- */
+        .contact-btn {
+            width: 26px;
+            height: 26px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            border: none;
+            color: #495057;
+            font-size: 12px;
+            transition: background-color 0.2s ease;
+        }
+        .contact-btn:hover {
+            background-color: #dee2e6;
+        }
+        
+        /* --- Floating Action Buttons --- */
+        .fab {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: transform 0.2s ease;
+        }
+        .fab:hover {
+            transform: scale(1.05);
+        }
+        .fab svg {
+            width: 20px;
+            height: 20px;
+        }
+        .fab-main {
+            bottom: 20px;
+            right: 20px;
+        }
+        .fab-secondary {
+            bottom: 80px;
+            right: 20px;
+            background-color: #0d6efd;
+        }
+        .fab-tertiary {
+            bottom: 140px;
+            right: 20px;
+            background-color: #6c757d;
+        }
+        
+        /* --- Table Adjustments --- */
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+            padding: 8px 12px;
+        }
+        .table th {
+            font-weight: 500;
+            color: #495057;
+            background-color: #f8f9fa;
+            font-size: 0.85rem;
+        }
+        .table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+        .table tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.03) !important;
+        }
+        .participant-name {
+            font-weight: 500;
+            color: #212529;
+            font-size: 0.9rem;
+        }
+        
+        /* --- Row States --- */
+        .present-row {
+            background-color: #f0fff4 !important;
+        }
+        .absent-row {
+            background-color: #fff5f5 !important;
+        }
+        .search-highlight {
+            background-color: #ffeb3b;
+        }
+        
+        /* --- Modal Adjustments --- */
+        .modal-header, .modal-footer, .modal-body {
+            padding: 12px 16px;
+        }
+        .modal-header {
+            border-bottom: none;
+        }
+        .modal-footer {
+            border-top: none;
+        }
+        
+        /* --- Compact Form Elements --- */
+        .form-control, .form-select {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.85rem;
+            height: calc(1.5em + 0.75rem + 2px);
+        }
+        .form-label {
+            margin-bottom: 0.25rem;
+            font-size: 0.85rem;
+        }
+        
+        /* --- Badge for Counters --- */
+        .badge-count {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        /* --- Stats Card --- */
+        .stats-card {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .stats-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .participant-name {
+                font-size: 0.8rem;
+            }
+            .table td, .table th {
+                padding: 6px;
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="container py-2">
-  <div class="card shadow-sm mb-2">
-    <div class="card-body p-2">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <div>
-          <h5 class="mb-0 brand">Lista de Chamada</h5>
-          <div class="small-muted">Instituto Gnosis Brasil</div>
+    <div class="card shadow-sm mb-2">
+        <div class="card-body p-2">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <h5 class="mb-0 brand">Lista de Chamada</h5>
+                    <div class="small-muted">Instituto Gnosis Brasil</div>
+                </div>
+                <div>
+                    <span class="badge badge-count bg-primary" id="presentCount">0</span>
+                    <span class="badge badge-count bg-secondary" id="totalCount">0</span>
+                </div>
+            </div>
+    
+            <div class="stats-card">
+                <div class="row text-center">
+                    <div class="col-4">
+                        <div class="stats-value text-primary" id="statsPresent">0</div>
+                        <div class="small-muted">Presentes</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stats-value" id="statsAbsent">0</div>
+                        <div class="small-muted">Ausentes</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stats-value" id="statsPercentage">0%</div>
+                        <div class="small-muted">Comparecimento</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <input type="text" class="form-control form-control-sm me-2" id="searchInput" placeholder="Buscar por nome...">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="sortBtn">A-Z</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="sortStatusBtn">Status</button>
+                </div>
+            </div>
+    
+            <form id="attendanceForm" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+                <input type="hidden" name="_subject" value="Lista de Chamada">
+                <input type="hidden" name="_template" value="table">
+    
+                <div class="table-responsive">
+                    <table class="table table-sm mb-1">
+                        <thead>
+                            <tr>
+                                <th style="width:5%">#</th>
+                                <th>Participante</th>
+                                <th style="width:18%">Presença</th>
+                                <th style="width:8%"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="participantsTableBody">
+                        </tbody>
+                    </table>
+                </div>
+    
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <div class="small-muted">
+                        <span id="presentText">0 presentes</span>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-sm btn-outline-secondary me-1" id="markAllYes">Todos</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="markAllNo">Nenhum</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div>
-          <span class="badge badge-count bg-primary" id="presentCount">0</span>
-          <span class="badge badge-count bg-secondary" id="totalCount">0</span>
-        </div>
-      </div>
-
-      <form id="attendanceForm" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
-        <input type="hidden" name="_subject" value="Lista de Chamada - Palestra 13/08">
-        <input type="hidden" name="_template" value="table">
-
-        <div class="table-responsive">
-          <table class="table table-sm mb-1">
-            <thead>
-              <tr>
-                <th style="width:5%">#</th>
-                <th>Participante</th>
-                <th style="width:18%">Presença</th>
-                <th style="width:8%"></th>
-              </tr>
-            </thead>
-            <tbody id="participantsTableBody">
-              <!-- Participants will be inserted here by JavaScript -->
-            </tbody>
-          </table>
-        </div>
-
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <div class="small-muted">
-            <span id="presentText">0 presentes</span>
-          </div>
-          <div>
-            <button type="button" class="btn btn-sm btn-outline-secondary me-1" id="markAllYes">Todos</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary" id="markAllNo">Nenhum</button>
-          </div>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
-
-<!-- Contact Info Modal -->
+    
 <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="contactModalTitle">Contato</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-2">
-        <div class="mb-2">
-          <label class="form-label small-muted">E-mail</label>
-          <p id="contactEmail" class="mb-1 small"></p>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalTitle">Contato</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-2">
+                    <label class="form-label small-muted">E-mail</label>
+                    <p id="contactEmail" class="mb-1 small"></p>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label small-muted">Telefone</label>
+                    <p id="contactPhone" class="small"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-warning" id="editParticipantBtn">Editar</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
         </div>
-        <div class="mb-2">
-          <label class="form-label small-muted">Telefone</label>
-          <p id="contactPhone" class="small"></p>
-        </div>
-      </div>
-      <div class="modal-footer p-2">
-        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Fechar</button>
-      </div>
     </div>
-  </div>
 </div>
-
-<!-- Add Participant Modal -->
+    
 <div class="modal fade" id="addParticipantModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header p-2">
-        <h5 class="modal-title">Novo Participante</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-2">
-        <form id="newParticipantForm">
-          <div class="mb-2">
-            <label for="firstName" class="form-label">Nome</label>
-            <input type="text" class="form-control form-control-sm" id="firstName" required>
-          </div>
-          <div class="mb-2">
-            <label for="lastName" class="form-label">Sobrenome</label>
-            <input type="text" class="form-control form-control-sm" id="lastName" required>
-          </div>
-          <div class="mb-2">
-            <label for="phone" class="form-label">Celular</label>
-            <input type="tel" class="form-control form-control-sm" id="phone" required>
-          </div>
-          <div class="mb-2">
-            <label for="email" class="form-label">E-mail</label>
-            <input type="email" class="form-control form-control-sm" id="email" required>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer p-2">
-        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-sm btn-primary" id="saveParticipantBtn">Salvar</button>
-      </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Novo Participante</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="newParticipantForm">
+                    <input type="hidden" id="participantId">
+                    <div class="mb-2">
+                        <label for="firstName" class="form-label">Nome</label>
+                        <input type="text" class="form-control form-control-sm" id="firstName" required>
+                    </div>
+                    <div class="mb-2">
+                        <label for="lastName" class="form-label">Sobrenome</label>
+                        <input type="text" class="form-control form-control-sm" id="lastName" required>
+                    </div>
+                    <div class="mb-2">
+                        <label for="phone" class="form-label">Celular</label>
+                        <input type="tel" class="form-control form-control-sm" id="phone" required>
+                    </div>
+                    <div class="mb-2">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" class="form-control form-control-sm" id="email" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-sm btn-primary" id="saveParticipantBtn">Salvar</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-<!-- Export Modal -->
+    
 <div class="modal fade" id="exportModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header p-2">
-        <h5 class="modal-title">Exportar Lista</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-2">
-        <div class="mb-2">
-          <label class="form-label">Formato</label>
-          <select class="form-select form-select-sm" id="exportFormat">
-            <option value="csv">CSV (Excel)</option>
-            <option value="json">JSON</option>
-            <option value="text">Texto</option>
-          </select>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Exportar Lista</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-2">
+                    <label class="form-label">Formato</label>
+                    <select class="form-select form-select-sm" id="exportFormat">
+                        <option value="csv">CSV (Excel)</option>
+                        <option value="json">JSON</option>
+                        <option value="text">Texto</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Conteúdo</label>
+                    <select class="form-select form-select-sm" id="exportContent">
+                        <option value="all">Todos os participantes</option>
+                        <option value="present">Apenas presentes</option>
+                        <option value="absent">Apenas ausentes</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-sm btn-primary" id="exportBtn">Exportar</button>
+            </div>
         </div>
-        <div class="mb-2">
-          <label class="form-label">Conteúdo</label>
-          <select class="form-select form-select-sm" id="exportContent">
-            <option value="all">Todos os participantes</option>
-            <option value="present">Apenas presentes</option>
-            <option value="absent">Apenas ausentes</option>
-          </select>
-        </div>
-      </div>
-      <div class="modal-footer p-2">
-        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-sm btn-primary" id="exportBtn">Exportar</button>
-      </div>
     </div>
-  </div>
 </div>
-
-<!-- Floating Action Buttons -->
-<button type="button" class="fab" data-bs-toggle="modal" data-bs-target="#addParticipantModal" title="Adicionar participante">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-  </svg>
+    
+<button type="button" class="fab fab-main" data-bs-toggle="modal" data-bs-target="#addParticipantModal" title="Adicionar participante">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+    </svg>
 </button>
-
-<button type="button" class="action-btn secondary" id="exportFab" title="Exportar lista">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-  </svg>
+    
+<button type="button" class="fab fab-secondary" id="exportFab" title="Exportar lista">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+    </svg>
 </button>
-
+    
+<button type="button" class="fab fab-tertiary" id="statsFab" title="Estatísticas">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+</button>
+    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Lista completa de participantes (69 inscritos)
-let participants = [
-  {name: "Marinalda Berté", phone: "+5 555 999 458 956", email: "mari_berte@yahoo.com.br", present: false},
-  {name: "Jacira Teresinha Do Nascimento", phone: "+5 547 992 584 409", email: "jacenascimento9030@gmail.com", present: false},
-  {name: "Bruno Eduardo Martins", phone: "+5 547 991 537 183", email: "martins.brunoe@gmail.com", present: false},
-  {name: "Jessika de Jesus Marques", phone: "+5 547 984 740 076", email: "marquesjessika63@gmail.com", present: false},
-  {name: "Elisiane Carvalho Ribeiro", phone: "+5 547 991 181 107", email: "Eliscarvalhorib@gmail.com", present: false},
-  {name: "Luiz Gabriel Gomes de Moura", phone: "+5 546 999 423 537", email: "luizgabrielgomesmoura506@gmail.com", present: false},
-  {name: "Jeanine Isis", phone: "+5 547 988 600 098", email: "ninedakota@gmail.com", present: false},
-  {name: "Paula De Campos", phone: "+5 547 996 286 308", email: "eng.paula@outlook.com", present: false},
-  {name: "Thiago Henrique Alonço", phone: "+5 547 984 860 666", email: "thiagoalonso1207@gmail.com", present: false},
-  {name: "Edinéia Ferreira de Lima", phone: "+5 547 996 067 031", email: "edidelima1997@gmail.com", present: false},
-  {name: "Thaís Campos Nunes", phone: "+5 553 981 369 987", email: "nutri.thaisnunes@gmail.com", present: false},
-  {name: "Ana Valpereiro", phone: "+5 515 991 082 448", email: "acvalpereiro@gmail.con", present: false},
-  {name: "Vagner José da Silva da Silva", phone: "+5 548 991 844 127", email: "vagnerjds14@gmail.com", present: false},
-  {name: "Fabiane Carvalho", phone: "+5 547 999 165 286", email: "fabianefcarvalho@hotmail.com", present: false},
-  {name: "Simone Ribeiro", phone: "+5 547 988 891 057", email: "simoneribeiros1007@gmail.com", present: false},
-  {name: "Michele Ramos", phone: "+5 547 997 365 073", email: "micheleramos1995hl@gmail.com", present: false},
-  {name: "Jennifer Dorneles Mendes", phone: "+5 547 996 332 764", email: "jenniferdornelesmendes@gmail.com", present: false},
-  {name: "Juliana Volpato Prá", phone: "+5 547 988 471 997", email: "juhvpra@hotmail.com", present: false},
-  {name: "Carla Rocinei Rott", phone: "+5 547 992 421 006", email: "carlarott35@gmail.com", present: false},
-  {name: "Thinara Machado", phone: "+5 547 984 266 007", email: "thinaramachado@hotmail.com", present: false},
-  {name: "Phatrícia S Sílva", phone: "+5 547 984 367 087", email: "patriciadastrosa212@gmail.com", present: false},
-  {name: "Carla Kühl", phone: "+5 547 991 150 666", email: "cadavezmelhor.ck@gmail.com", present: false},
-  {name: "Luiz Claudio Gasnhar", phone: "+5 547 988 689 566", email: "caugasnhar@hotmail.com", present: false},
-  {name: "Luciana Gossi dos Reis", phone: "+5 547 999 145 293", email: "Luci", present: false},
-  {name: "Fernanda Caetano", phone: "+5 547 988 505 525", email: "benettinanda.arq@gmail.com", present: false},
-  {name: "Rosimar Nicoleti", phone: "+5 547 991 669 613", email: "rotaymuller@gmail.com", present: false},
-  {name: "Nelci Rodrigues", phone: "+5 547 996 197 745", email: "nelcirodrigues229@gmail.com", present: false},
-  {name: "Carmelice Rosa Santos Kruger", phone: "+5 547 992 847 609", email: "kasantos596@gmail.com", present: false},
-  {name: "Carla Lima", phone: "+5 541 987 381 826", email: "carlaaregis@gmail.com", present: false},
-  {name: "Lenira Senegaglia", phone: "+5 547 988 387 801", email: "leni.glia@gmail.com", present: false},
-  {name: "Bruna Gonçalves", phone: "+5 547 996 001 647", email: "brunat15@hotmail.com", present: false},
-  {name: "Elisangela Nogara Schmoeller", phone: "+5 547 991 366 343", email: "Ellisnogara@hotmail.com", present: false},
-  {name: "Tatiane Michalak", phone: "+5 547 999 481 665", email: "saboresegraosbarra@gmail.com", present: false},
-  {name: "Vinícius de Oliveira", phone: "+5 547 997 277 934", email: "viniciusoliveiramine@gmail.com", present: false},
-  {name: "Alberto Medeiros", phone: "+5 547 996 273 274", email: "almtubarao@gmail.com", present: false},
-  {name: "Nicole Farias", phone: "+5 567 991 940 239", email: "nicole.livya@gmail.com", present: false},
-  {name: "Samara Silva", phone: "+5 547 991 411 914", email: "samararank@hotmail.com", present: false},
-  {name: "Sabrina Venera", phone: "+5 547 999 346 417", email: "sabrinavenera420@gmail.com", present: false},
-  {name: "Maria Aparecida Felipe Venera", phone: "+55 479 769 264 5", email: "aparecidavenera01@gmail.com", present: false},
-  {name: "Célia Hotz", phone: "+5 547 999 452 555", email: "h.katia@hotmail.com.br", present: false},
-  {name: "Juliano Baeumle", phone: "+5 547 996 992 740", email: "jbaeumle3@gmail.com", present: false},
-  {name: "Gerson Luis Weiller", phone: "+5 547 996 072 082", email: "w_gerson@hotmail.com", present: false},
-  {name: "Maria Angela de Abreu", phone: "+5 547 999 712 467", email: "angela.abreu658@gmail.com", present: false},
-  {name: "Karina Dos Santos", phone: "+5 547 988 754 648", email: "kahds2204@gmail.com", present: false},
-  {name: "Nicole Ferreira", phone: "+5 547 999 374 593", email: "popniic@gmail.com", present: false},
-  {name: "Juliana Richs Bast", phone: "+5 547 988 611 694", email: "julianarichsbast@gmail.com", present: false},
-  {name: "Caroline Fenski", phone: "+5 547 991 583 370", email: "nandohferreirarei@gmail.com", present: false},
-  {name: "Thailson Hentoni Alonço", phone: "+5 547 996 802 738", email: "thailsonalonso@gmail.com", present: false},
-  {name: "Edilce Vanderlinde Beckauser", phone: "+5 547 996 979 017", email: "edilce.beckauser@gmail.com", present: false},
-  {name: "Kamyle Naiara Gois", phone: "+5 541 988 216 876", email: "Kamyllenayaragois@gmail.com", present: false},
-  {name: "Nilton Slobodzian", phone: "+5 542 998 605 188", email: "niltonbiologia@gmail.com", present: false},
-  {name: "Michele Stein", phone: "+5 547 988 899 333", email: "Michelestein2@gmail.com", present: false},
-  {name: "Omar Lenzi", phone: "+5 547 992 061 964", email: "omar.lenzi12@gmail.com", present: false},
-  {name: "Janice Pacheco", phone: "+5 547 999 039 070", email: "janicepachecofeiten@hotmail.com", present: false},
-  {name: "Tamara Lima", phone: "+5 547 992 046 050", email: "tamara.mdelima@hotmail.com", present: false},
-  {name: "Silvana Miranda", phone: "+5 547 997 931 270", email: "rigosilvanamiranda@gmail.com", present: false},
-  {name: "Josiane Mayumi Umetsu", phone: "+5 547 996 707 282", email: "mayzinha.umetsu@gmail.com", present: false},
-  {name: "Marcos Guiza", phone: "+5 547 991 389 260", email: "Guiza.gemeos@gmail.com", present: false},
-  {name: "Junior Dos Santos Dos Santos", phone: "+5 547 997 574 489", email: "junroids@gmail.com", present: false},
-  {name: "Elis Regina de Góis", phone: "+5 547 996 577 545", email: "elisdegoisregina@gmail.com", present: false},
-  {name: "Sheila Círico", phone: "+5 547 933 801 352", email: "sheciricoama@gmail.com", present: false},
-  {name: "José Marcos Anzolin", phone: "+5 547 988 211 695", email: "jmanzolin@gmail.com", present: false},
-  {name: "Adriano Machado Junior", phone: "+5 547 997 873 293", email: "usinagemveme@gmail.com", present: false},
-  {name: "Danielle Luiza Vicenzi", phone: "+5 547 999 528 700", email: "dani.luiza.vivenzi@gmail.com", present: false},
-  {name: "Laiza Caroline Guerreiro Castelar", phone: "+5 547 996 006 678", email: "lcgcastelar@gmail.com", present: false},
-  {name: "Adriana Aparecida Costa Santos", phone: "+5 547 988 985 689", email: "adri.fehduda@gmail.com", present: false},
-  {name: "Rafael Petry", phone: "+5 547 991 585 160", email: "petry.musico@gmail.com", present: true},
-  {name: "Gisele W. Guiza", phone: "+5 547 991 356 227", email: "leliwg@gmail.com", present: false},
-  {name: "Andresa Noeli Stinghen", phone: "+5 547 997 430 005", email: "andresanoeli@gmail.com", present: false}
-];
-
-// DOM Elements
-const tableBody = document.getElementById('participantsTableBody');
-const totalCount = document.getElementById('totalCount');
-const presentCount = document.getElementById('presentCount');
-const presentText = document.getElementById('presentText');
-const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
-const contactEmail = document.getElementById('contactEmail');
-const contactPhone = document.getElementById('contactPhone');
-const contactModalTitle = document.getElementById('contactModalTitle');
-const exportModal = new bootstrap.Modal(document.getElementById('exportModal'));
-
-// Render participants table
-function renderParticipantsTable() {
-  tableBody.innerHTML = '';
-  let presentCounter = 0;
-  
-  participants.forEach((participant, index) => {
-    const row = document.createElement('tr');
+    // A lista de participantes padrão
+    const defaultParticipants = [
+        { id: '1', name: "Marinalda Berté", phone: "+5 555 999 458 956", email: "mari_berte@yahoo.com.br", present: false },
+        { id: '2', name: "Jacira Teresinha Do Nascimento", phone: "+5 547 992 584 409", email: "jacenascimento9030@gmail.com", present: false },
+        { id: '3', name: "Bruno Eduardo Martins", phone: "+5 547 991 537 183", email: "martins.brunoe@gmail.com", present: false },
+        { id: '4', name: "Jessika de Jesus Marques", phone: "+5 547 984 740 076", email: "marquesjessika63@gmail.com", present: false },
+        { id: '5', name: "Elisiane Carvalho Ribeiro", phone: "+5 547 991 181 107", email: "Eliscarvalhorib@gmail.com", present: false },
+        { id: '6', name: "Luiz Gabriel Gomes de Moura", phone: "+5 546 999 423 537", email: "luizgabrielgomesmoura506@gmail.com", present: false },
+        { id: '7', name: "Jeanine Isis", phone: "+5 547 988 600 098", email: "ninedakota@gmail.com", present: false },
+        { id: '8', name: "Paula De Campos", phone: "+5 547 996 286 308", email: "eng.paula@outlook.com", present: false },
+        { id: '9', name: "Thiago Henrique Alonço", phone: "+5 547 984 860 666", email: "thiagoalonso1207@gmail.com", present: false },
+        { id: '10', name: "Edinéia Ferreira de Lima", phone: "+5 547 996 067 031", email: "edidelima1997@gmail.com", present: false },
+        { id: '11', name: "Thaís Campos Nunes", phone: "+5 553 981 369 987", email: "nutri.thaisnunes@gmail.com", present: false },
+        { id: '12', name: "Ana Valpereiro", phone: "+5 515 991 082 448", email: "acvalpereiro@gmail.con", present: false },
+        { id: '13', name: "Vagner José da Silva", phone: "+5 548 991 844 127", email: "vagnerjds14@gmail.com", present: false },
+        { id: '14', name: "Fabiane Carvalho", phone: "+5 547 999 165 286", email: "fabianefcarvalho@hotmail.com", present: false },
+        { id: '15', name: "Simone Ribeiro", phone: "+5 547 988 891 057", email: "simoneribeiros1007@gmail.com", present: false },
+        { id: '16', name: "Michele Ramos", phone: "+5 547 997 365 073", email: "micheleramos1995hl@gmail.com", present: false },
+        { id: '17', name: "Jennifer Dorneles Mendes", phone: "+5 547 996 332 764", email: "jenniferdornelesmendes@gmail.com", present: false },
+        { id: '18', name: "Juliana Volpato Prá", phone: "+5 547 988 471 997", email: "juhvpra@hotmail.com", present: false },
+        { id: '19', name: "Carla Rocinei Rott", phone: "+5 547 992 421 006", email: "carlarott35@gmail.com", present: false },
+        { id: '20', name: "Thinara Machado", phone: "+5 547 984 266 007", email: "thinaramachado@hotmail.com", present: false },
+        { id: '21', name: "Phatrícia S Sílva", phone: "+5 547 984 367 087", email: "patriciadastrosa212@gmail.com", present: false },
+        { id: '22', name: "Carla Kühl", phone: "+5 547 991 150 666", email: "cadavezmelhor.ck@gmail.com", present: false },
+        { id: '23', name: "Luiz Claudio Gasnhar", phone: "+5 547 988 689 566", email: "caugasnhar@hotmail.com", present: false },
+        { id: '24', name: "Luciana Gossi dos reis", phone: "+5 547 999 145 293", email: "Luci", present: false },
+        { id: '25', name: "Fernanda Caetano", phone: "+5 547 988 505 525", email: "benettinanda.arq@gmail.com", present: false },
+        { id: '26', name: "Rosimar Nicoleti", phone: "+5 547 991 669 613", email: "rotaymuller@gmail.com", present: false },
+        { id: '27', name: "Nelci Rodrigues", phone: "+5 547 996 197 745", email: "nelcirodrigues229@gmail.com", present: false },
+        { id: '28', name: "Carmelice Rosa Santos Kruger", phone: "+5 547 992 847 609", email: "kasantos596@gmail.com", present: false },
+        { id: '29', name: "Carla Lima", phone: "+5 541 987 381 826", email: "carlaaregis@gmail.com", present: false },
+        { id: '30', name: "Lenira Senegaglia", phone: "+5 547 988 387 801", email: "leni.glia@gmail.com", present: false },
+        { id: '31', name: "Bruna Gonçalves", phone: "+5 547 996 001 647", email: "brunat15@hotmail.com", present: false },
+        { id: '32', name: "Elisangela Nogara Schmoeller", phone: "+5 547 991 366 343", email: "Ellisnogara@hotmail.com", present: false },
+        { id: '33', name: "Tatiane Michalak", phone: "+5 547 999 481 665", email: "saboresegraosbarra@gmail.com", present: false },
+        { id: '34', name: "Vinícius de oliveira", phone: "+5 547 997 277 934", email: "viniciusoliveiramine@gmail.com", present: false },
+        { id: '35', name: "Alberto Medeiros", phone: "+5 547 996 273 274", email: "almtubarao@gmail.com", present: false },
+        { id: '36', name: "Nicole Farias", phone: "+5 567 991 940 239", email: "nicole.livya@gmail.com", present: false },
+        { id: '37', name: "Samara Silva", phone: "+5 547 991 411 914", email: "samararank@hotmail.com", present: false },
+        { id: '38', name: "Sabrina Venera", phone: "+5 547 999 346 417", email: "sabrinavenera420@gmail.com", present: false },
+        { id: '39', name: "Maria Aparecida felipe venera", phone: "+55 479 769 264 5", email: "aparecidavenera01@gmail.com", present: false },
+        { id: '40', name: "Célia Hotz", phone: "+5 547 999 452 555", email: "h.katia@hotmail.com.br", present: false },
+        { id: '41', name: "Juliano Baeumle", phone: "+5 547 996 992 740", email: "jbaeumle3@gmail.com", present: false },
+        { id: '42', name: "Gerson Luis Weiller", phone: "+5 547 996 072 082", email: "w_gerson@hotmail.com", present: false },
+        { id: '43', name: "Maria Angela de Abreu", phone: "+5 547 999 712 467", email: "angela.abreu658@gmail.com", present: false },
+        { id: '44', name: "Karina Dos Santos", phone: "+5 547 988 754 648", email: "kahds2204@gmail.com", present: false },
+        { id: '45', name: "Nicole Ferreira", phone: "+5 547 999 374 593", email: "popniic@gmail.com", present: false },
+        { id: '46', name: "Juliana Richs Bast", phone: "+5 547 988 611 694", email: "julianarichsbast@gmail.com", present: false },
+        { id: '47', name: "Caroline Fenski", phone: "+5 547 991 583 370", email: "nandohferreirarei@gmail.com", present: false },
+        { id: '48', name: "Thailson Hentoni Alonço", phone: "+5 547 996 802 738", email: "thailsonalonso@gmail.com", present: false },
+        { id: '49', name: "Edilce Vanderlinde Beckauser", phone: "+5 547 996 979 017", email: "edilce.beckauser@gmail.com", present: false },
+        { id: '50', name: "Kamyle Naiara Gois", phone: "+5 541 988 216 876", email: "Kamyllenayaragois@gmail.com", present: false },
+        { id: '51', name: "Nilton Slobodzian", phone: "+5 542 998 605 188", email: "niltonbiologia@gmail.com", present: false },
+        { id: '52', name: "Michele Stein", phone: "+5 547 988 899 333", email: "Michelestein2@gmail.com", present: false },
+        { id: '53', name: "Omar Lenzi", phone: "+5 547 992 061 964", email: "omar.lenzi12@gmail.com", present: false },
+        { id: '54', name: "Janice Pacheco", phone: "+5 547 999 039 070", email: "janicepachecofeiten@hotmail.com", present: false },
+        { id: '55', name: "Tamara Lima", phone: "+5 547 992 046 050", email: "tamara.mdelima@hotmail.com", present: false },
+        { id: '56', name: "Silvana Miranda", phone: "+5 547 997 931 270", email: "rigosilvanamiranda@gmail.com", present: false },
+        { id: '57', name: "Josiane Mayumi Umetsu", phone: "+5 547 996 707 282", email: "mayzinha.umetsu@gmail.com", present: false },
+        { id: '58', name: "Marcos Guiza", phone: "+5 547 991 389 260", email: "Guiza.gemeos@gmail.com", present: false },
+        { id: '59', name: "Junior Dos Santos", phone: "+5 547 997 574 489", email: "junroids@gmail.com", present: false },
+        { id: '60', name: "Elis Regina de Góis", phone: "+5 547 996 577 545", email: "elisdegoisregina@gmail.com", present: false },
+        { id: '61', name: "Sheila Círico", phone: "+5 547 933 801 352", email: "sheciricoama@gmail.com", present: false },
+        { id: '62', name: "José Marcos Anzolin", phone: "+5 547 988 211 695", email: "jmanzolin@gmail.com", present: false },
+        { id: '63', name: "Adriano Machado junior", phone: "+5 547 997 873 293", email: "usinagemveme@gmail.com", present: false },
+        { id: '64', name: "Danielle luiza Vicenzi", phone: "+5 547 999 528 700", email: "dani.luiza.vivenzi@gmail.com", present: false },
+        { id: '65', name: "Laiza Caroline guerreiro castelar", phone: "+5 547 996 006 678", email: "lcgcastelar@gmail.com", present: false },
+        { id: '66', name: "Adriana Aparecida Costa santos", phone: "+5 547 988 985 689", email: "adri.fehduda@gmail.com", present: false },
+        { id: '67', name: "Rafael Petry", phone: "+5 547 991 585 160", email: "petry.musico@gmail.com", present: true },
+        { id: '68', name: "Gisele W. Guiza", phone: "+5 547 991 356 227", email: "leliwg@gmail.com", present: false },
+        { id: '69', name: "Andresa Noeli Stinghen", phone: "+5 547 997 430 005", email: "andresanoeli@gmail.com", present: false }
+    ];
     
-    if (participant.present) presentCounter++;
+    // Inicia a lista vazia
+    let participants = []; 
     
-    row.innerHTML = `
-      <td>${index + 1}</td>
-      <td class="participant-name">${participant.name}</td>
-      <td>
-        <label class="switch">
-          <input type="checkbox" ${participant.present ? 'checked' : ''} data-id="${index}">
-          <span class="slider"></span>
-        </label>
-      </td>
-      <td class="text-end">
-        <button type="button" class="contact-btn" data-bs-toggle="modal" data-bs-target="#contactModal"
-          data-name="${participant.name}" data-email="${participant.email}" data-phone="${participant.phone}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-          </svg>
-        </button>
-      </td>
-    `;
-    
-    tableBody.appendChild(row);
-  });
-  
-  // Update counters
-  totalCount.textContent = participants.length;
-  presentCount.textContent = presentCounter;
-  presentText.textContent = `${presentCounter} ${presentCounter === 1 ? 'presente' : 'presentes'}`;
-  
-  // Add event listeners to switches
-  document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
-      const id = this.getAttribute('data-id');
-      participants[id].present = this.checked;
-      updateCounters();
+    // Iniciar a aplicação
+    document.addEventListener('DOMContentLoaded', () => {
+        init();
     });
-  });
-  
-  // Add event listeners to contact buttons
-  document.querySelectorAll('.contact-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const name = this.getAttribute('data-name');
-      const email = this.getAttribute('data-email');
-      const phone = this.getAttribute('data-phone');
-      
-      contactModalTitle.textContent = name;
-      contactEmail.textContent = email;
-      contactPhone.textContent = phone;
-    });
-  });
-}
 
-// Update counters
-function updateCounters() {
-  const presentCounter = participants.filter(p => p.present).length;
-  presentCount.textContent = presentCounter;
-  presentText.textContent = `${presentCounter} ${presentCounter === 1 ? 'presente' : 'presentes'}`;
-}
-
-// Add new participant
-document.getElementById('saveParticipantBtn').addEventListener('click', function() {
-  const firstName = document.getElementById('firstName').value.trim();
-  const lastName = document.getElementById('lastName').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const email = document.getElementById('email').value.trim();
-  
-  if (firstName && lastName && phone && email) {
-    participants.push({
-      name: `${firstName} ${lastName}`,
-      phone: phone,
-      email: email,
-      present: false
-    });
+    function init() {
+        loadParticipants();
+        renderParticipantsTable();
+        setupEventListeners();
+        updateStats();
+    }
     
-    // Close modal and reset form
-    bootstrap.Modal.getInstance(document.getElementById('addParticipantModal')).hide();
-    document.getElementById('newParticipantForm').reset();
+    // Carregar dados salvos do localStorage
+    function loadParticipants() {
+        const savedData = localStorage.getItem('participantsData');
+        if (savedData) {
+            try {
+                // Se houver dados salvos, use-os
+                participants = JSON.parse(savedData);
+                console.log("Participantes carregados do localStorage:", participants);
+            } catch (e) {
+                console.error("Erro ao carregar participantes do localStorage:", e);
+                // Em caso de erro, reverte para a lista padrão e salva
+                participants = defaultParticipants;
+                saveParticipants();
+            }
+        } else {
+            // Se não houver dados salvos (primeiro acesso), usa a lista padrão e salva
+            participants = defaultParticipants;
+            saveParticipants();
+            console.log("Lista padrão carregada e salva no localStorage.");
+        }
+    }
+
+    // Salvar dados no localStorage
+    function saveParticipants() {
+        localStorage.setItem('participantsData', JSON.stringify(participants));
+        renderParticipantsTable();
+        updateStats();
+    }
     
-    // Update table
-    renderParticipantsTable();
-  } else {
-    alert('Por favor, preencha todos os campos!');
-  }
-});
+    // Gerar estatísticas
+    function updateStats() {
+        const total = participants.length;
+        const present = participants.filter(p => p.present).length;
+        const percentage = total > 0 ? Math.round((present / total) * 100) : 0;
+        
+        document.getElementById('statsPresent').textContent = present;
+        document.getElementById('statsAbsent').textContent = total - present;
+        document.getElementById('statsPercentage').textContent = `${percentage}%`;
+        document.getElementById('presentCount').textContent = present;
+        document.getElementById('totalCount').textContent = total;
+        document.getElementById('presentText').textContent = `${present} ${present === 1 ? 'presente' : 'presentes'}`;
+    }
+    
+    // Renderizar a tabela de participantes
+    function renderParticipantsTable(data = participants) {
+        const tableBody = document.getElementById('participantsTableBody');
+        tableBody.innerHTML = '';
+        
+        data.forEach((participant, index) => {
+            const row = document.createElement('tr');
+            row.className = participant.present ? 'present-row' : 'absent-row';
+            row.title = `Clique para editar ${participant.name}`;
+            
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td class="participant-name">${participant.name}</td>
+                <td>
+                    <label class="switch">
+                        <input type="checkbox" data-id="${participant.id}" ${participant.present ? 'checked' : ''}>
+                        <span class="slider"></span>
+                    </label>
+                </td>
+                <td class="text-end">
+                    <button type="button" class="contact-btn" data-bs-toggle="modal" data-bs-target="#contactModal"
+                        data-id="${participant.id}" data-name="${participant.name}" 
+                        data-email="${participant.email}" data-phone="${participant.phone}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                    </button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
 
-// Bulk actions
-document.getElementById('markAllYes').addEventListener('click', () => {
-  participants.forEach(p => p.present = true);
-  renderParticipantsTable();
-});
+    // Função para configurar os ouvintes de evento
+    function setupEventListeners() {
+        // Delegação de evento para as checkboxes
+        document.getElementById('participantsTableBody').addEventListener('change', (e) => {
+            if (e.target.type === 'checkbox') {
+                const id = e.target.getAttribute('data-id');
+                const participant = participants.find(p => p.id === id);
+                if (participant) {
+                    participant.present = e.target.checked;
+                    saveParticipants();
+                }
+            }
+        });
 
-document.getElementById('markAllNo').addEventListener('click', () => {
-  participants.forEach(p => p.present = false);
-  renderParticipantsTable();
-});
+        // Funções de ordenação
+        document.getElementById('sortBtn').addEventListener('click', () => {
+            participants.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+            renderParticipantsTable();
+        });
 
-// Export functionality
-document.getElementById('exportFab').addEventListener('click', () => {
-  exportModal.show();
-});
+        document.getElementById('sortStatusBtn').addEventListener('click', () => {
+            participants.sort((a, b) => b.present - a.present);
+            renderParticipantsTable();
+        });
 
-document.getElementById('exportBtn').addEventListener('click', () => {
-  const format = document.getElementById('exportFormat').value;
-  const content = document.getElementById('exportContent').value;
-  
-  let dataToExport = [];
-  
-  // Filter data based on selection
-  switch(content) {
-    case 'present':
-      dataToExport = participants.filter(p => p.present);
-      break;
-    case 'absent':
-      dataToExport = participants.filter(p => !p.present);
-      break;
-    default:
-      dataToExport = [...participants];
-  }
-  
-  // Format the data
-  let exportContent = '';
-  let filename = 'lista_presenca';
-  
-  switch(format) {
-    case 'csv':
-      filename += '.csv';
-      // CSV header
-      exportContent = "Nome,E-mail,Telefone,Presente\n";
-      // CSV rows
-      dataToExport.forEach(p => {
-        exportContent += `"${p.name}","${p.email}","${p.phone}","${p.present ? 'Sim' : 'Não'}"\n`;
-      });
-      break;
-      
-    case 'json':
-      filename += '.json';
-      exportContent = JSON.stringify(dataToExport, null, 2);
-      break;
-      
-    case 'text':
-      filename += '.txt';
-      dataToExport.forEach(p => {
-        exportContent += `${p.name} | ${p.email} | ${p.phone} | ${p.present ? 'Presente' : 'Ausente'}\n`;
-      });
-      break;
-  }
-  
-  // Create download link
-  const blob = new Blob([exportContent], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  
-  exportModal.hide();
-});
+        // Função de busca com debounce
+        let searchTimeout;
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filtered = participants.filter(p =>
+                    p.name.toLowerCase().includes(searchTerm) ||
+                    p.email.toLowerCase().includes(searchTerm)
+                );
+                renderParticipantsTable(filtered);
+            }, 300);
+        });
 
-// Form submit handler
-document.getElementById('attendanceForm').addEventListener('submit', function(e) {
-  // Prepare data for submission
-  const formData = participants.map((p, index) => ({
-    id: index + 1,
-    name: p.name,
-    attendance: p.present ? 'Presente' : 'Ausente',
-    email: p.email,
-    phone: p.phone
-  }));
-  
-  // Add hidden input with JSON data
-  const dataInput = document.createElement('input');
-  dataInput.type = 'hidden';
-  dataInput.name = 'attendance_data';
-  dataInput.value = JSON.stringify(formData);
-  this.appendChild(dataInput);
-  
-  // Form will be submitted to FormSubmit
-});
+        // Funções para marcar todos
+        document.getElementById('markAllYes').addEventListener('click', () => {
+            participants.forEach(p => p.present = true);
+            saveParticipants();
+        });
 
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
-  renderParticipantsTable();
-});
+        document.getElementById('markAllNo').addEventListener('click', () => {
+            participants.forEach(p => p.present = false);
+            saveParticipants();
+        });
+
+        // Exportar dados
+        document.getElementById('exportFab').addEventListener('click', () => {
+            new bootstrap.Modal(document.getElementById('exportModal')).show();
+        });
+
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            const format = document.getElementById('exportFormat').value;
+            const content = document.getElementById('exportContent').value;
+            
+            let dataToExport = [];
+            switch(content) {
+                case 'present': dataToExport = participants.filter(p => p.present); break;
+                case 'absent': dataToExport = participants.filter(p => !p.present); break;
+                default: dataToExport = [...participants];
+            }
+            
+            let exportContent = '';
+            let filename = 'lista_presenca';
+            
+            switch(format) {
+                case 'csv':
+                    filename += '.csv';
+                    exportContent = "Nome,E-mail,Telefone,Presente\n";
+                    dataToExport.forEach(p => {
+                        exportContent += `"${p.name}","${p.email}","${p.phone}","${p.present ? 'Sim' : 'Não'}"\n`;
+                    });
+                    break;
+                case 'json':
+                    filename += '.json';
+                    exportContent = JSON.stringify(dataToExport, null, 2);
+                    break;
+                case 'text':
+                    filename += '.txt';
+                    dataToExport.forEach(p => {
+                        exportContent += `${p.name} | ${p.email} | ${p.phone} | ${p.present ? 'Presente' : 'Ausente'}\n`;
+                    });
+                    break;
+            }
+            
+            const blob = new Blob([exportContent], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            bootstrap.Modal.getInstance(document.getElementById('exportModal')).hide();
+        });
+
+        // Mostrar estatísticas
+        document.getElementById('statsFab').addEventListener('click', () => {
+            const stats = {
+                total: participants.length,
+                present: participants.filter(p => p.present).length
+            };
+            stats.absent = stats.total - stats.present;
+            stats.percentage = stats.total > 0 ? Math.round((stats.present / stats.total) * 100) : 0;
+            
+            alert(`Estatísticas:\n\nPresentes: ${stats.present}\nAusentes: ${stats.absent}\nTotal: ${stats.total}\nComparecimento: ${stats.percentage}%`);
+        });
+
+        // Gerenciamento de participantes
+        document.getElementById('saveParticipantBtn').addEventListener('click', function() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const id = document.getElementById('participantId').value;
+            
+            if (!firstName || !lastName || !phone || !email) {
+                alert('Por favor, preencha todos os campos!');
+                return;
+            }
+            
+            const participantData = {
+                id: id || Date.now().toString(),
+                name: `${firstName} ${lastName}`,
+                phone,
+                email,
+                present: false,
+                registrationDate: new Date().toISOString().split('T')[0]
+            };
+            
+            if (id) {
+                // Edição
+                const index = participants.findIndex(p => p.id === id);
+                if (index !== -1) {
+                    participants[index] = participantData;
+                }
+            } else {
+                // Novo participante
+                participants.push(participantData);
+            }
+            
+            bootstrap.Modal.getInstance(document.getElementById('addParticipantModal')).hide();
+            document.getElementById('newParticipantForm').reset();
+            saveParticipants();
+        });
+
+        // Modal de contato/edição
+        document.getElementById('contactModal').addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget;
+            const name = button.getAttribute('data-name');
+            const email = button.getAttribute('data-email');
+            const phone = button.getAttribute('data-phone');
+            const id = button.getAttribute('data-id');
+            
+            document.getElementById('contactModalTitle').textContent = name;
+            document.getElementById('contactEmail').textContent = email;
+            document.getElementById('contactPhone').textContent = phone;
+            document.getElementById('participantId').value = id;
+        });
+
+        document.getElementById('editParticipantBtn').addEventListener('click', function() {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('contactModal'));
+            const id = document.getElementById('participantId').value;
+            const participant = participants.find(p => p.id === id);
+            
+            if (participant) {
+                const names = participant.name.split(' ');
+                const lastName = names.pop();
+                const firstName = names.join(' ');
+                
+                document.getElementById('firstName').value = firstName;
+                document.getElementById('lastName').value = lastName;
+                document.getElementById('phone').value = participant.phone;
+                document.getElementById('email').value = participant.email;
+                document.getElementById('participantId').value = participant.id;
+                
+                modal.hide();
+                bootstrap.Modal.getInstance(document.getElementById('addParticipantModal')).show();
+            }
+        });
+
+        // Form submit handler
+        document.getElementById('attendanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (participants.length === 0) {
+                alert('Nenhum participante para enviar!');
+                return;
+            }
+            
+            const formData = participants.map((p, index) => ({
+                id: index + 1,
+                name: p.name,
+                attendance: p.present ? 'Presente' : 'Ausente',
+                email: p.email,
+                phone: p.phone
+            }));
+            
+            // Aqui você pode adicionar a lógica para enviar o formData, se necessário
+            console.log('Dados a serem enviados:', formData);
+            alert('Formulário de presença processado. Verifique o console para os dados.');
+        });
+    }
 </script>
 </body>
 </html>
