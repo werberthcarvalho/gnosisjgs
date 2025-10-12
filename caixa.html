@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tabela de Funções Python — Colinha</title>
+  <style>
+    /* Reset simples */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif; background:#0f1724; color: #e6eef8; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    .container {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 22px;
+    }
+
+    header {
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: #ffd86b;
+      letter-spacing: .2px;
+    }
+
+    header p {
+      font-size: .95rem;
+      color: #9fb0c8;
+    }
+
+    /* Card */
+    .card {
+      background: linear-gradient(180deg, rgba(16,24,34,0.9), rgba(10,14,20,0.9));
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    /* Controls row */
+    .controls {
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap:wrap;
+    }
+
+    .search {
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .search input {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: #dfecff;
+      min-width: 220px;
+    }
+
+    .btn {
+      background: #1f6feb;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn[aria-pressed="true"] { background:#0b5ed7 }
+
+    /* Table styles */
+    .table-wrap {
+      overflow: auto;
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+
+    thead th {
+      text-align: left;
+      padding: 14px 12px;
+      font-size: .95rem;
+      color: #9fd8ff;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    tbody td {
+      padding: 12px;
+      border-bottom: 1px dashed rgba(255,255,255,0.02);
+      vertical-align: top;
+      font-size: .95rem;
+      color: #dbefff;
+    }
+
+    tbody tr:hover td { background: rgba(255,255,255,0.01); }
+
+    code {
+      background: rgba(255,255,255,0.03);
+      padding: 4px 6px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+      color: #fff;
+      font-size: .9rem;
+    }
+
+    /* Small screens */
+    @media (max-width: 720px) {
+      header h1 { font-size: 1.2rem; }
+      table { min-width: 600px; }
+      .search input { min-width: 140px; }
+    }
+
+    /* Helper footer */
+    footer {
+      margin-top: 12px;
+      color: #7f9fb8;
+      font-size: .85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Tabela de funções Python</h1>
+        <p>Colinha rápida — Werberth Carvalho</p>
+      </div>
+      <div class="controls" style="margin-left:auto">
+        <div class="search">
+          <input id="q" type="search" placeholder="Filtrar por função ou descrição..." aria-label="Pesquisar" />
+          <button id="clear" class="btn" title="Limpar">Limpar</button>
+        </div>
+        <button id="copyAll" class="btn" title="Copiar tabela">Copiar</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="table-wrap">
+        <table id="funTable" aria-describedby="tabela-funcoes">
+          <thead>
+            <tr>
+              <th>Função</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>print()</code></td>
+              <td>Exibe dados na saída padrão (console).</td>
+              <td><code>print("Olá, mundo!")</code></td>
+            </tr>
+            <tr>
+              <td><code>input()</code></td>
+              <td>Lê texto digitado pelo usuário.</td>
+              <td><code>nome = input("Seu nome: ")</code></td>
+            </tr>
+            <tr>
+              <td><code>len()</code></td>
+              <td>Retorna o tamanho de sequência (str, list, tuple, dict, ...).</td>
+              <td><code>len("Python")  # 6</code></td>
+            </tr>
+            <tr>
+              <td><code>type()</code></td>
+              <td>Retorna o tipo do objeto.</td>
+              <td><code>type(3.14)  # &lt;class 'float'&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>int()</code></td>
+              <td>Converte para inteiro (quando possível).</td>
+              <td><code>int("5")  # 5</code></td>
+            </tr>
+            <tr>
+              <td><code>float()</code></td>
+              <td>Converte para ponto flutuante.</td>
+              <td><code>float("3.14")  # 3.14</code></td>
+            </tr>
+            <tr>
+              <td><code>str()</code></td>
+              <td>Converte valor para string.</td>
+              <td><code>str(123)  # "123"</code></td>
+            </tr>
+            <tr>
+              <td><code>list()</code></td>
+              <td>Cria lista a partir de iterável.</td>
+              <td><code>list("abc")  # ['a','b','c']</code></td>
+            </tr>
+            <tr>
+              <td><code>dict()</code></td>
+              <td>Cria dicionário (vazio ou a partir de pares/kwargs).</td>
+              <td><code>dict(nome="Ana", idade=20)</code></td>
+            </tr>
+            <tr>
+              <td><code>max()</code></td>
+              <td>Retorna o maior item de um iterável.</td>
+              <td><code>max([1,5,3])  # 5</code></td>
+            </tr>
+            <tr>
+              <td><code>min()</code></td>
+              <td>Retorna o menor item.</td>
+              <td><code>min([1,5,3])  # 1</code></td>
+            </tr>
+            <tr>
+              <td><code>sum()</code></td>
+              <td>Soma todos os elementos numéricos de um iterável.</td>
+              <td><code>sum([1,2,3])  # 6</code></td>
+            </tr>
+            <tr>
+              <td><code>sorted()</code></td>
+              <td>Retorna uma nova lista ordenada a partir de um iterável.</td>
+              <td><code>sorted([3,1,2])  # [1,2,3]</code></td>
+            </tr>
+            <tr>
+              <td><code>range()</code></td>
+              <td>Cria sequência numérica - útil em loops.</td>
+              <td><code>list(range(5))  # [0,1,2,3,4]</code></td>
+            </tr>
+            <tr>
+              <td><code>enumerate()</code></td>
+              <td>Itera retornando tuplas (índice, valor).</td>
+              <td><code>for i,v in enumerate(["a","b"]): print(i,v)</code></td>
+            </tr>
+            <tr>
+              <td><code>zip()</code></td>
+              <td>Agrupa iteráveis em pares (ou tuplas).</td>
+              <td><code>list(zip([1,2],[3,4]))  # [(1,3),(2,4)]</code></td>
+            </tr>
+            <tr>
+              <td><code>map()</code></td>
+              <td>Aplica função a todos os elementos de um iterável.</td>
+              <td><code>list(map(str,[1,2,3]))  # ['1','2','3']</code></td>
+            </tr>
+            <tr>
+              <td><code>filter()</code></td>
+              <td>Filtra elementos que satisfazem uma condição.</td>
+              <td><code>list(filter(lambda x: x&gt;2, [1,2,3,4]))</code></td>
+            </tr>
+            <tr>
+              <td><code>any()</code></td>
+              <td>Retorna True se algum elemento for verdadeiro.</td>
+              <td><code>any([0,1,0])  # True</code></td>
+            </tr>
+            <tr>
+              <td><code>all()</code></td>
+              <td>Retorna True se todos os elementos forem verdadeiros.</td>
+              <td><code>all([1,2,3])  # True</code></td>
+            </tr>
+            <tr>
+              <td><code>round()</code></td>
+              <td>Arredonda números (padrão 0 casas ou n casas).</td>
+              <td><code>round(3.1415,2)  # 3.14</code></td>
+            </tr>
+            <tr>
+              <td><code>abs()</code></td>
+              <td>Retorna valor absoluto.</td>
+              <td><code>abs(-5)  # 5</code></td>
+            </tr>
+            <tr>
+              <td><code>open()</code></td>
+              <td>Abre arquivo (leitura/escrita).</td>
+              <td><code>open('arq.txt','r')</code></td>
+            </tr>
+            <tr>
+              <td><code>help()</code></td>
+              <td>Mostra documentação built-in de objetos/funções.</td>
+              <td><code>help(len)</code></td>
+            </tr>
+            <tr>
+              <td><code>isinstance()</code></td>
+              <td>Verifica se objeto é instância de um tipo/classe.</td>
+              <td><code>isinstance(5,int)  # True</code></td>
+            </tr>
+            <tr>
+              <td><code>format()</code></td>
+              <td>Formata strings (método de string ou builtin).</td>
+              <td><code>'{:.2f}'.format(3.1415)  # '3.14'</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <footer id="tabela-funcoes">
+        Dica: use a caixa de pesquisa para filtrar função ou exemplo. Clique "Copiar" para copiar a tabela.
+      </footer>
+    </section>
+  </div>
+
+  <script>
+    // Funções simples de busca e cópia
+    (function(){
+      const q = document.getElementById('q');
+      const clearBtn = document.getElementById('clear');
+      const copyBtn = document.getElementById('copyAll');
+      const tbody = document.querySelector('#funTable tbody');
+
+      function filterTable(term) {
+        const rows = tbody.querySelectorAll('tr');
+        term = term.trim().toLowerCase();
+        rows.forEach(r => {
+          const txt = r.innerText.toLowerCase();
+          r.style.display = txt.includes(term) ? '' : 'none';
+        });
+      }
+
+      q.addEventListener('input', e => filterTable(e.target.value));
+      clearBtn.addEventListener('click', () => { q.value = ''; filterTable(''); q.focus(); });
+
+      copyBtn.addEventListener('click', async () => {
+        // copia a tabela como texto simples
+        const rows = Array.from(tbody.querySelectorAll('tr'))
+          .filter(r => r.style.display !== 'none')
+          .map(r => Array.from(r.cells).map(c => c.innerText.trim()).join('\t'));
+        const header = Array.from(document.querySelectorAll('#funTable thead th')).map(h => h.innerText.trim()).join('\t');
+        const text = [header, ...rows].join('\n');
+        try {
+          await navigator.clipboard.writeText(text);
+          copyBtn.innerText = 'Copiado!';
+          setTimeout(()=> copyBtn.innerText = 'Copiar', 1300);
+        } catch (err) {
+          alert('Não foi possível copiar automaticamente. Selecione e copie manualmente.');
+        }
+      });
+
+      // Atalho: Ctrl/Cmd+F foca na caixa de busca
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'f') {
+          e.preventDefault();
+          q.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
