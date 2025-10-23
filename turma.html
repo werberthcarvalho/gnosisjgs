@@ -1,139 +1,258 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscrição - Gnosis Jaraguá do Sul</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="img/cropped-logo-sol-7.webp" type="image/jpeg">
-    <style>
-        /* Estilos customizados para cores do tema original */
-        .bg-primary {
-            /* Mantendo o tom roxo/escuro da seção de inscrição no design original (que era azul primário do bootstrap) */
-            background-color: #005e94 !important;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscrição – Gnosis Jaraguá do Sul</title>
 
-        .text-gnosis {
-            color: #6f42c1;
-        }
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        /* Estilo para garantir que o formulário fique visível no centro da página, ajustando a cor do texto do card (preto) */
-        .card-body.p-4.text-dark {
-            background-color: white; /* Garante que o fundo do card seja branco */
-            color: #212529 !important; /* Cor do texto dentro do card */
-        }
-    </style>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7-32x32.webp" type="image/webp">
+
+  <!-- Estilos personalizados -->
+  <style>
+    :root {
+      --color-primary: #6f42c1;
+      --color-dark-bg: #49288e;
+      --color-text-light: #ffffff;
+      --color-accent: #d6c5ff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+    }
+
+    /* Cores e estilo da marca Gnosis */
+    .bg-gnosis-dark {
+      background-color: var(--color-dark-bg) !important;
+    }
+
+    .btn-gnosis-primary {
+      background-color: var(--color-primary);
+      color: #fff !important;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gnosis-primary:hover {
+      background-color: #5a32a8;
+      transform: scale(1.03);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.25);
+    }
+
+    .card {
+      border: none;
+      border-radius: 1rem;
+    }
+
+    .card-body {
+      background-color: #fff;
+      border-radius: 1rem;
+    }
+
+    /* --- Cabeçalho Modernizado Gnosis --- */
+    .animate-header {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .title-main {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      color: var(--color-text-light);
+      text-transform: uppercase;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.25rem;
+      color: var(--color-accent);
+      transition: color 0.3s ease;
+    }
+
+    .subtitle:hover {
+      color: #ffffff;
+    }
+
+    .divider {
+      width: 80px;
+      height: 3px;
+      background-color: #ffffff;
+      margin: 15px auto;
+      border-radius: 3px;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: #e9e9e9;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 576px) {
+      .title-main {
+        font-size: 1.7rem;
+      }
+      .subtitle {
+        font-size: 1.05rem;
+      }
+    }
+
+    footer {
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
+  <section id="register" class="py-5 bg-gnosis-dark text-white" style="min-height: 100vh; display: flex; align-items: center;">
+    <div class="container">
 
-    <section id="register" class="py-5 bg-primary text-white" style="min-height: 100vh; display: flex; align-items: center;">
-        <div class="container">
-            <h2 class="text-center fw-bold mb-4">Formulário de Inscrição <br><strong>Curdo de Autoconhecimento <br> Gnosis 1º CÂMARA | TURMA 1 2025</strong></h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="card shadow">
-                        <div class="card-body p-4 text-dark">
-                            <form action="https://formsubmit.co/jaraguadosul@gnosisbrasil.com" method="POST">
-                                <input type="hidden" name="_next"
-                                    value="https://werberthcarvalho.github.io/gnosisjgs/obrigado.html">
-                                <input type="hidden" name="_captcha" value="false">
-                                <input type="text" name="_honey" style="display:none"> <input type="hidden" name="_autoresponse" value="Olá! 
- para o curso de Gnosis 1º Cãmara em Jaraguá do Sul.
-Obrigado por se inscrever *Curso Gnosis 1º Câmara*! 
+      <!-- Cabeçalho Modernizado -->
+      <div class="text-center mb-5 animate-header">
+        <h1 class="fw-bold title-main">Curso de Autoconhecimento</h1>
+        <h2 class="fw-semibold subtitle">Gnosis — 1ª Câmara · Turma 1 · 2025</h2>
+        <div class="divider"></div>
+        <p class="mt-3 mb-0 description">Preencha o formulário abaixo e garanta sua inscrição</p>
+      </div>
 
-📅 **Data:** 02 de Novembro 
-⏰ **Horário:** 09h às 10h30 
-📍 **Local:** Centro Comercial San Michelli - R. Guilherme Dancker, n. 161, Sala 15 - Centro
- Jaraguá do Sul – SC 
+      <!-- Formulário -->
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card shadow">
+            <div class="card-body p-4 text-dark">
+              <form action="https://formsubmit.co/jaraguadosul@gnosisbrasil.com" method="POST">
+                <input type="hidden" name="_next" value="https://werberthcarvalho.github.io/gnosisjgs/obrigado.html">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="text" name="_honey" style="display:none">
 
-🔮 **Não perca!** Leve um caderno para anotações. 
+                <input type="hidden" name="_autoresponse" value="Olá!
+Obrigado por se inscrever para o curso de Gnosis 1º Câmara em Jaraguá do Sul.
+Data: 02 de Novembro
+Horário: 09h às 10h30
+Local: Centro Comercial San Michelli – R. Guilherme Dancker, 161, Sala 15 – Centro, Jaraguá do Sul – SC
+Não perca! Leve um caderno para anotações.
+Entre no grupo do WhatsApp da turma:
+https://chat.whatsapp.com/Kk7sd2uX9QEHFCKDiuxb2B
+Atenciosamente,
+Equipe Gnosis Jaraguá do Sul
+jaraguadosul@gnosisbrasil.com">
 
-📲 Entre no nosso grupo do WhatsApp da turma: 
-👉 [Grupo do WhatsApp](https://chat.whatsapp.com/Kk7sd2uX9QEHFCKDiuxb2B?mode=wwc) 
-
-Atenciosamente, 
-**Equipe Gnosis Jaraguá do Sul** jaraguadosul@gnosisbrasil.com">
-
-                                <input type="text" name="_honey" style="display:none">
-                                <input type="hidden" name="_captcha" value="false">
-
-                                <div class="mb-3">
-                                    <label class="form-label">Nome Completo*</label>
-                                    <input type="text" name="Nome" class="form-control" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">E-mail*</label>
-                                    <input type="email" name="email" class="form-control" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">WhatsApp*</label>
-                                    <input type="tel" name="WhatsApp" class="form-control" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Já participou de algum evento?*</label>
-                                    <select name="Participou" class="form-select" required>
-                                        <option value="" selected disabled>Selecione...</option>
-                                        <option value="Sim">Sim</option>
-                                        <option value="Não">Não</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-4">
-                                    <label class="form-label">Como soube da palestra? (Marque todas que aplicar)</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="Origem[]" id="instagram"
-                                            value="Instagram">
-                                        <label class="form-check-label" for="instagram">Instagram</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="Origem[]" id="facebook"
-                                            value="Facebook">
-                                        <label class="form-check-label" for="facebook">Facebook</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="Origem[]" id="indicacao"
-                                            value="Indicação">
-                                        <label class="form-check-label" for="indicacao">Indicação</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="Origem[]" id="whatsapp"
-                                            value="Grupo WhatsApp">
-                                        <label class="form-check-label" for="whatsapp">Grupo WhatsApp</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="Origem[]" id="outros"
-                                            value="Outros">
-                                        <label class="form-check-label" for="outros">Outros</label>
-                                    </div>
-                                </div>
-
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-warning btn-lg">
-                                        <i class="fas fa-paper-plane me-2"></i> Enviar Inscrição
-                                    </button>
-                                </div>
-
-                                <noscript>
-                                    <p class="text-danger mt-2">Por favor, habilite JavaScript para enviar o formulário.
-                                    </p>
-                                </noscript>
-                            </form>
-                        </div>
-                    </div>
-                    <p class="text-white-50 mt-3 text-center">Seus dados estão seguros conosco. Não compartilhamos suas
-                        informações.</p>
+                <div class="mb-3">
+                  <label class="form-label">Nome Completo*</label>
+                  <input type="text" name="Nome" class="form-control" required>
                 </div>
+
+                <div class="mb-3">
+                  <label class="form-label">E-mail*</label>
+                  <input type="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">WhatsApp*</label>
+                  <input type="tel" name="WhatsApp" class="form-control" required pattern="\d{10,13}" title="Digite o número com DDD (ex: 47999999999)">
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Já participou de algum evento?*</label>
+                  <select name="Participou" class="form-select" required>
+                    <option value="" selected disabled>Selecione...</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                  </select>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label">Como soube da palestra? (Marque todas que se aplicarem)</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="Origem[]" value="Instagram">
+                    <label class="form-check-label">Instagram</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="Origem[]" value="Facebook">
+                    <label class="form-check-label">Facebook</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="Origem[]" value="Indicação">
+                    <label class="form-check-label">Indicação</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="Origem[]" value="Grupo WhatsApp">
+                    <label class="form-check-label">Grupo WhatsApp</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="Origem[]" value="Outros">
+                    <label class="form-check-label">Outros</label>
+                  </div>
+                </div>
+
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-gnosis-primary btn-lg">
+                    <i class="fas fa-paper-plane me-2"></i> Enviar Inscrição
+                  </button>
+                </div>
+
+                <noscript>
+                  <p class="text-danger mt-2">Por favor, habilite o JavaScript para enviar o formulário.</p>
+                </noscript>
+              </form>
             </div>
+          </div>
+          <p class="text-white-50 mt-3 text-center">Seus dados estão seguros conosco. Não compartilhamos suas informações.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <footer class="py-4 bg-dark text-white text-center">
+    <div class="container">
+      <div class="mb-3">
+        <img src="img/cropped-logo-sol-7.webp" alt="Logo Gnosis" style="height: 60px;">
+      </div>
+      <p>© 2025 Gnosis Brasil. Todos os direitos reservados.</p>
+      <p class="mb-0">
+        <a href="https://gnosisbrasil.com/politica-de-privacidade/" class="me-3">Política de Privacidade</a>
+        <a href="https://gnosisbrasil.com/termos-de-uso/">Termos de Uso</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
